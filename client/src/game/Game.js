@@ -1,13 +1,9 @@
-import React from "react";
+import React, { useRef } from "react";
 
-const Game = (props) => <canvas {...props} />;
+const Game = (props) => {
+  const canvasRef = useRef(null);
+
+  return <canvas ref={canvasRef} {...props} />;
+};
 
 export default Game;
-
-/* export const createCanvas = () => {
-  const canvas = React.createElement("canvas", {
-    width: 375,
-    height: 812,
-  });
-  return canvas;
-}; */
