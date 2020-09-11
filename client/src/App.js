@@ -7,6 +7,7 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
+import Game from "./game/Game";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         </Route>
         <Route path="/game">
           <div>Game</div>
+          <Game />
         </Route>
         <Route path="/">
           <Redirect to="/home" />
