@@ -12,7 +12,6 @@
     "prettify": "prettier --write .",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "client": "cd client && npm start",
-    "server": "nodemon server.js",
     "storybook": "cd client && npm run storybook",
     "start": "node server.js"
   },
