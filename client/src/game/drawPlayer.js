@@ -1,5 +1,5 @@
 export default function drawPlayer(player, context) {
-  const { width, height, offsetLeft, offsetTop } = player;
+  const { width, height, left, top } = player;
   context.fillStyle = "#ff0167";
-  context.fillRect(offsetLeft, offsetTop, width, height);
+  context.fillRect(left, top, width, height);
 }
