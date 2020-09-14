@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import draw from "./draw";
 import drawPlayer from "./drawPlayer";
+import movePlayer from "./movePlayer";
 
 function resizeCanvas(canvas) {
   //based on Ipone 6/7/8
@@ -38,6 +39,8 @@ const Game = (props) => {
     };
     gameLoop();
   }, []);
+
+  window.addEventListener("keydown", (event) => movePlayer(event));
 
   return <canvas ref={canvasRef} {...props} />;
 };
