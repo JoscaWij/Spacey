@@ -5,7 +5,7 @@ export default function movePlayer(event, player) {
     SPACE: 32,
   };
 
-  const speedChange = 1.2;
+  const speedChange = 3;
 
   if (event.keyCode === KEY.RIGHT) {
     player.speed += speedChange;
