@@ -6,7 +6,7 @@
   "main": "server.js",
   "scripts": {
     "test": "npm run lint && cd client && npm test",
-    "start": "node server.js",
+    "start": "node server.js && cd client && npm start",
     "prettify": "prettier --write .",
     "lint": "eslint . --ext .js",
     "build": "cd client && npm run build",
