@@ -1,4 +1,4 @@
-export default function movePlayer(event) {
+export default function movePlayer(event, player) {
   const KEY = {
     LEFT: 37,
     RIGHT: 39,
@@ -6,10 +6,10 @@ export default function movePlayer(event) {
   };
 
   if (event.keyCode === KEY.RIGHT) {
-    console.log("walking right");
+    player.speed -= 1;
   }
   if (event.keyCode === KEY.LEFT) {
-    console.log("walking left");
+    player.speed += 1;
   }
-  return;
+  return player.speed;
 }
