@@ -13,9 +13,9 @@ function clearCanvas(canvas, context) {
   context.clearRect(0, 0, canvas.widh, canvas.height);
 }
 
-/* const physics = {
-  friction: 0.9,
-}; */
+const physics = {
+  friction: 0.7,
+};
 
 const player = {
   width: 30,
@@ -40,6 +40,8 @@ const Game = (props) => {
         draw(context);
 
         drawPlayer(player, context);
+
+        player.speed *= physics.friction;
         player.offsetLeft += player.speed;
 
         requestAnimationFrame(gameLoop);
