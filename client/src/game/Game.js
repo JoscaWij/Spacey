@@ -13,6 +13,18 @@ function clearCanvas(canvas, context) {
   context.clearRect(0, 0, canvas.widh, canvas.height);
 }
 
+/* const physics = {
+  friction: 0.9,
+}; */
+
+const player = {
+  width: 30,
+  height: 50,
+  offsetLeft: 10,
+  offsetTop: 450,
+  speed: 0,
+};
+
 const Game = (props) => {
   const canvasRef = useRef(null);
 
@@ -20,27 +32,23 @@ const Game = (props) => {
     const canvas = canvasRef.current;
     resizeCanvas(canvas);
 
-    const gameLoop = () => {
-      const canvas = canvasRef.current;
-      const context = canvas.getContext("2d");
-      clearCanvas(canvas, context);
-      draw(context);
+    function startGameLoop() {
+      const gameLoop = () => {
+        const canvas = canvasRef.current;
+        const context = canvas.getContext("2d");
+        clearCanvas(canvas, context);
+        draw(context);
 
-      const player = {
-        width: 30,
-        height: 50,
-        offsetLeft: 10,
-        offsetTop: 0.7 * canvas.height,
+        drawPlayer(player, context);
+        player.offsetLeft += player.speed;
+
+        requestAnimationFrame(gameLoop);
       };
-
-      drawPlayer(player, context);
-
-      requestAnimationFrame(gameLoop);
-    };
-    gameLoop();
+      gameLoop();
+      window.addEventListener("keydown", (event) => movePlayer(event, player));
+    }
+    startGameLoop();
   }, []);
-
-  window.addEventListener("keydown", (event) => movePlayer(event));
 
   return <canvas ref={canvasRef} {...props} />;
 };
