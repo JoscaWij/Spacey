@@ -2,8 +2,12 @@ import React, { useEffect, useRef } from "react";
 import draw from "./Draw";
 
 function resizeCanvas(canvas) {
-  canvas.width = 5000;
-  canvas.height = 5000;
+  canvas.width = 500;
+  canvas.height = 500;
+}
+
+function clearCanvas(canvas, context) {
+  context.clearRect(0, 0, canvas.widh, canvas.height);
 }
 
 const Game = (props) => {
@@ -11,9 +15,17 @@ const Game = (props) => {
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    const context = canvas.getContext("2d");
     resizeCanvas(canvas);
-    draw(context);
+
+    const gameLoop = () => {
+      const canvas = canvasRef.current;
+      const context = canvas.getContext("2d");
+      clearCanvas(canvas, context);
+      draw(context);
+
+      requestAnimationFrame(gameLoop);
+    };
+    gameLoop();
   }, []);
 
   return <canvas ref={canvasRef} {...props} />;
