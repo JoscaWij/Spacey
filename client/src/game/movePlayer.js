@@ -5,11 +5,13 @@ export default function movePlayer(event, player) {
     SPACE: 32,
   };
 
+  const speedChange = 1.2;
+
   if (event.keyCode === KEY.RIGHT) {
-    player.speed -= 1;
+    player.speed += speedChange;
   }
   if (event.keyCode === KEY.LEFT) {
-    player.speed += 1;
+    player.speed -= speedChange;
   }
   return player.speed;
 }
