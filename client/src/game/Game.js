@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import draw from "./Draw";
+import draw from "./draw";
 
 function resizeCanvas(canvas) {
   canvas.width = 500;
