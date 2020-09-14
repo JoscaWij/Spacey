@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import draw from "./draw";
+import drawPlayer from "./drawPlayer";
 
 function resizeCanvas(canvas) {
   canvas.width = 500;
@@ -22,6 +23,15 @@ const Game = (props) => {
       const context = canvas.getContext("2d");
       clearCanvas(canvas, context);
       draw(context);
+
+      const player = {
+        width: 30,
+        height: 50,
+        offsetLeft: 10,
+        offsetTop: 0.7 * canvas.height,
+      };
+
+      drawPlayer(player, context);
 
       requestAnimationFrame(gameLoop);
     };
