@@ -3,8 +3,9 @@ import draw from "./draw";
 import drawPlayer from "./drawPlayer";
 
 function resizeCanvas(canvas) {
-  canvas.width = 500;
-  canvas.height = 500;
+  //based on Ipone 6/7/8
+  canvas.width = 375;
+  canvas.height = 667;
 }
 
 function clearCanvas(canvas, context) {
