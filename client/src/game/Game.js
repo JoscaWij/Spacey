@@ -43,7 +43,7 @@ const Game = (props) => {
         drawPlayer(player, context);
 
         player.offsetX *= physics.friction;
-        player.left += player.offset;
+        player.left += player.offsetX;
 
         requestAnimationFrame(gameLoop);
       };
