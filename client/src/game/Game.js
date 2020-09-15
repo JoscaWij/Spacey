@@ -22,7 +22,8 @@ const player = {
   height: 50,
   left: 10,
   top: 450,
-  offset: 0,
+  offsetX: 0,
+  offsetY: 0,
 };
 
 const Game = (props) => {
@@ -41,7 +42,7 @@ const Game = (props) => {
 
         drawPlayer(player, context);
 
-        player.offset *= physics.friction;
+        player.offsetX *= physics.friction;
         player.left += player.offset;
 
         requestAnimationFrame(gameLoop);
