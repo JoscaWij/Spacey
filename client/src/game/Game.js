@@ -47,8 +47,8 @@ const Game = (props) => {
 
         player.offsetX *= physics.friction;
         player.left += player.offsetX;
-        player.offsetY -= physics.gravity;
-        player.top -= player.offsetY;
+        player.offsetY += physics.gravity;
+        player.top += player.offsetY;
 
         if (player.top + player.height > floor) {
           player.offsetY = 0;
