@@ -1,13 +1,16 @@
 export default function movePlayer(keyCode, player) {
-  const offsetExtent = 3;
+  const offsetXExtent = 3;
+  const offsetYExtent = 16;
 
   if (keyCode === "ArrowRight") {
-    player.offsetX += offsetExtent;
+    player.offsetX += offsetXExtent;
   }
   if (keyCode === "ArrowLeft") {
-    player.offsetX -= offsetExtent;
+    player.offsetX -= offsetXExtent;
   }
   if (keyCode === "Space") {
     console.log("jumping");
+    player.offsetY -= offsetYExtent;
   }
+  console.log(player.offsetY);
 }
