@@ -22,10 +22,12 @@ const player = {
   width: 30,
   height: 50,
   left: 10,
-  top: 450,
+  top: 200,
   offsetX: 0,
   offsetY: 0,
 };
+
+const floor = 500;
 
 const Game = (props) => {
   const canvasRef = useRef(null);
@@ -47,6 +49,10 @@ const Game = (props) => {
         player.left += player.offsetX;
         player.offsetY -= physics.gravity;
         player.top -= player.offsetY;
+
+        if (player.top + player.height > floor) {
+          console.log("hitting the floor");
+        }
 
         requestAnimationFrame(gameLoop);
       };
