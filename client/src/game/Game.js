@@ -48,7 +48,7 @@ const Game = (props) => {
       };
       gameLoop();
       window.addEventListener("keydown", (event) =>
-        movePlayer(event.keyCode, player)
+        movePlayer(event.code, player)
       );
     }
     startGameLoop();
