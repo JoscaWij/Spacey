@@ -1,4 +1,4 @@
-export default function movePlayer(event, player) {
+export default function movePlayer(keyCode, player) {
   const KEY = {
     LEFT: 37,
     RIGHT: 39,
@@ -7,11 +7,10 @@ export default function movePlayer(event, player) {
 
   const offsetExtent = 3;
 
-  if (event.keyCode === KEY.RIGHT) {
+  if (keyCode === KEY.RIGHT) {
     player.offset += offsetExtent;
   }
-  if (event.keyCode === KEY.LEFT) {
+  if (keyCode === KEY.LEFT) {
     player.offset -= offsetExtent;
   }
-  return player.offset;
 }
