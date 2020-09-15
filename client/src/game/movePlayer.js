@@ -7,4 +7,7 @@ export default function movePlayer(keyCode, player) {
   if (keyCode === "ArrowLeft") {
     player.offset -= offsetExtent;
   }
+  if (keyCode === "Space") {
+    console.log("jumping");
+  }
 }
