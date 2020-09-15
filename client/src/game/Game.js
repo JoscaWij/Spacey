@@ -15,6 +15,7 @@ function clearCanvas(canvas, context) {
 
 const physics = {
   friction: 0.7,
+  gravity: 1,
 };
 
 const player = {
@@ -44,6 +45,8 @@ const Game = (props) => {
 
         player.offsetX *= physics.friction;
         player.left += player.offsetX;
+        player.offsetY -= physics.gravity;
+        player.top -= player.offsetY;
 
         requestAnimationFrame(gameLoop);
       };
