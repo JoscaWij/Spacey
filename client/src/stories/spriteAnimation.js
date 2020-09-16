@@ -7,12 +7,31 @@ rows & cols = 4
 */
 
 function drawPlayerSprite(player, context) {
-  const { width, height, left, top } = player;
+  const { width, height, left, top, direction } = player;
 
   const srcWidth = 180;
   const srcHeight = 240;
-  const startRow = 1;
   const startCol = 0;
+  let startRow;
+
+  switch (direction) {
+    case "FRONT":
+      startRow = 0;
+      break;
+    case "RIGHT":
+      startRow = 1;
+      break;
+    case "LEFT":
+      startRow = 2;
+      break;
+    case "JUMPING":
+      startRow = 3;
+      break;
+    default:
+      startRow = 0;
+      break;
+  }
+
   const srcX = srcWidth * startCol;
   const srcY = srcHeight * startRow;
 
@@ -65,6 +84,7 @@ const player = {
   height: 240,
   left: 10,
   top: 200,
+  direction: "FRONT",
 };
 
 const SpriteAnimation = (props) => {
