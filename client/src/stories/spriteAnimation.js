@@ -1,9 +1,13 @@
 import React, { useEffect, useRef } from "react";
+import { playerImage } from "./assets/spriteSheet";
 
-function drawPlayer(player, context) {
+function drawPlayerSprite(player, context) {
   const { width, height, left, top } = player;
+  context.beginPath();
+  context.drawImage(playerImage, left, top, width, height);
   context.fillStyle = "#ff0167";
-  context.fillRect(left, top, width, height);
+  context.fill();
+  context.closePath();
 }
 
 function draw(context) {
@@ -55,7 +59,7 @@ const SpriteAnimation = (props) => {
         clearCanvas(canvas, context);
         draw(context);
 
-        drawPlayer(player, context);
+        drawPlayerSprite(player, context);
 
         requestAnimationFrame(gameLoop);
       };
