@@ -59,15 +59,12 @@ function draw(context) {
 
 function rotatePlayer(keyCode, player) {
   if (keyCode === "ArrowRight") {
-    console.log("arrow right - show right side of player");
     player.direction = "RIGHT";
   }
   if (keyCode === "ArrowLeft") {
-    console.log("arrow left - show side of player");
     player.direction = "LEFT";
   }
   if (keyCode === "Space") {
-    console.log("show jumping player");
     player.direction = "JUMPING";
   }
 }
