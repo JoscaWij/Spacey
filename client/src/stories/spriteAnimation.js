@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from "react";
-import movePlayer from "./movePlayer";
 
 function drawPlayer(player, context) {
   const { width, height, left, top } = player;
@@ -42,7 +41,7 @@ const player = {
   top: 200,
 };
 
-const Game = (props) => {
+const SpriteAnimation = (props) => {
   const canvasRef = useRef(null);
 
   useEffect(() => {
@@ -61,9 +60,9 @@ const Game = (props) => {
         requestAnimationFrame(gameLoop);
       };
       gameLoop();
-      window.addEventListener("keydown", (event) =>
+      /*       window.addEventListener("keydown", (event) =>
         movePlayer(event.code, player)
-      );
+      ); */
     }
     startGameLoop();
   }, []);
@@ -71,4 +70,4 @@ const Game = (props) => {
   return <canvas ref={canvasRef} {...props} />;
 };
 
-export default Game;
+export default SpriteAnimation;
