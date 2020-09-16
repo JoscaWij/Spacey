@@ -71,8 +71,8 @@ function rotatePlayer(keyCode, player) {
 
 function resizeCanvas(canvas) {
   //based on Ipone 6/7/8
-  canvas.width = 375;
-  canvas.height = 667;
+  canvas.width = 220;
+  canvas.height = 280;
 }
 
 function clearCanvas(canvas, context) {
@@ -83,7 +83,7 @@ const player = {
   width: 180,
   height: 240,
   left: 10,
-  top: 200,
+  top: 10,
   direction: "FRONT",
 };
 
