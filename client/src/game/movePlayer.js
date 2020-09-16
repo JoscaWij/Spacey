@@ -9,8 +9,6 @@ export default function movePlayer(keyCode, player) {
     player.offsetX -= offsetXExtent;
   }
   if (keyCode === "Space") {
-    console.log("jumping");
     player.offsetY -= offsetYExtent;
   }
-  console.log(player.offsetY);
 }
