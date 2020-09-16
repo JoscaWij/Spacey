@@ -38,18 +38,17 @@ function draw(context) {
   context.fillRect(0, 0, context.canvas.width, context.canvas.height);
 }
 
-/* function movePlayer(keyCode, player) {
-  
-    if (keyCode === "ArrowRight") {
-      
-    }
-    if (keyCode === "ArrowLeft") {
-      
-    }
-    if (keyCode === "Space" && !player.jumping) {
-     
-    }
-  } */
+function rotatePlayer(keyCode) {
+  if (keyCode === "ArrowRight") {
+    console.log("arrow right - show right side of player");
+  }
+  if (keyCode === "ArrowLeft") {
+    console.log("arrow left - show side of player");
+  }
+  if (keyCode === "Space") {
+    console.log("show jumping player");
+  }
+}
 
 function resizeCanvas(canvas) {
   //based on Ipone 6/7/8
@@ -87,9 +86,9 @@ const SpriteAnimation = (props) => {
         requestAnimationFrame(gameLoop);
       };
       gameLoop();
-      /*       window.addEventListener("keydown", (event) =>
-        movePlayer(event.code, player)
-      ); */
+      window.addEventListener("keydown", (event) =>
+        rotatePlayer(event.code, player)
+      );
     }
     startGameLoop();
   }, []);
