@@ -1,10 +1,30 @@
 import React, { useEffect, useRef } from "react";
 import { playerImage } from "./assets/spriteSheet";
 
+/*
+one image: 180 x 240 = srcWidth x srcHeight
+*/
+
 function drawPlayerSprite(player, context) {
   const { width, height, left, top } = player;
+
+  const srcWidth = 180;
+  const srcHeight = 240;
+  const srcX = 0;
+  const srcY = 0;
+
   context.beginPath();
-  context.drawImage(playerImage, left, top, width, height);
+  context.drawImage(
+    playerImage,
+    srcX,
+    srcY,
+    srcWidth,
+    srcHeight,
+    left,
+    top,
+    width,
+    height
+  );
   context.fillStyle = "#ff0167";
   context.fill();
   context.closePath();
@@ -39,8 +59,8 @@ function clearCanvas(canvas, context) {
 }
 
 const player = {
-  width: 30,
-  height: 50,
+  width: 180,
+  height: 240,
   left: 10,
   top: 200,
 };
