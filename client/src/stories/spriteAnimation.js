@@ -18,10 +18,10 @@ function drawPlayerSprite(player, context) {
     case "FRONT":
       startRow = 0;
       break;
-    case "RIGHT":
+    case "LEFT":
       startRow = 1;
       break;
-    case "LEFT":
+    case "RIGHT":
       startRow = 2;
       break;
     case "JUMPING":
@@ -57,15 +57,18 @@ function draw(context) {
   context.fillRect(0, 0, context.canvas.width, context.canvas.height);
 }
 
-function rotatePlayer(keyCode) {
+function rotatePlayer(keyCode, player) {
   if (keyCode === "ArrowRight") {
     console.log("arrow right - show right side of player");
+    player.direction = "RIGHT";
   }
   if (keyCode === "ArrowLeft") {
     console.log("arrow left - show side of player");
+    player.direction = "LEFT";
   }
   if (keyCode === "Space") {
     console.log("show jumping player");
+    player.direction = "JUMPING";
   }
 }
 
