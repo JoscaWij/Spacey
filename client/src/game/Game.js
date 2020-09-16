@@ -15,15 +15,20 @@ function clearCanvas(canvas, context) {
 
 const physics = {
   friction: 0.7,
+  gravity: 1,
 };
 
 const player = {
   width: 30,
   height: 50,
   left: 10,
-  top: 450,
-  offset: 0,
+  top: 200,
+  offsetX: 0,
+  offsetY: 0,
+  jumping: true,
 };
+
+const floor = 500;
 
 const Game = (props) => {
   const canvasRef = useRef(null);
@@ -41,8 +46,16 @@ const Game = (props) => {
 
         drawPlayer(player, context);
 
-        player.offset *= physics.friction;
-        player.left += player.offset;
+        player.offsetX *= physics.friction;
+        player.left += player.offsetX;
+        player.offsetY += physics.gravity;
+        player.top += player.offsetY;
+
+        if (player.top > floor - player.height) {
+          player.offsetY = 0;
+          player.top = floor - player.height;
+          player.jumping = false;
+        }
 
         requestAnimationFrame(gameLoop);
       };
