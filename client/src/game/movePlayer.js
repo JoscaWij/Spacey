@@ -8,7 +8,8 @@ export default function movePlayer(keyCode, player) {
   if (keyCode === "ArrowLeft") {
     player.offsetX -= offsetXExtent;
   }
-  if (keyCode === "Space") {
+  if (keyCode === "Space" && !player.jumping) {
     player.offsetY -= offsetYExtent;
+    player.jumping = true;
   }
 }

@@ -25,6 +25,7 @@ const player = {
   top: 200,
   offsetX: 0,
   offsetY: 0,
+  jumping: true,
 };
 
 const floor = 500;
@@ -53,6 +54,7 @@ const Game = (props) => {
         if (player.top > floor - player.height) {
           player.offsetY = 0;
           player.top = floor - player.height;
+          player.jumping = false;
         }
 
         requestAnimationFrame(gameLoop);
