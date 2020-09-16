@@ -3,6 +3,7 @@ import { playerImage } from "./assets/spriteSheet";
 
 /*
 one image: 180 x 240 = srcWidth x srcHeight
+rows & cols = 4
 */
 
 function drawPlayerSprite(player, context) {
@@ -10,8 +11,10 @@ function drawPlayerSprite(player, context) {
 
   const srcWidth = 180;
   const srcHeight = 240;
-  const srcX = 0;
-  const srcY = 0;
+  const startRow = 1;
+  const startCol = 0;
+  const srcX = srcWidth * startCol;
+  const srcY = srcHeight * startRow;
 
   context.beginPath();
   context.drawImage(
