@@ -50,9 +50,9 @@ const Game = (props) => {
         player.offsetY += physics.gravity;
         player.top += player.offsetY;
 
-        if (player.top + player.height > floor) {
+        if (player.top > floor - player.height) {
           player.offsetY = 0;
-          player.top = floor + player.height;
+          player.top = floor - player.height;
         }
 
         requestAnimationFrame(gameLoop);
