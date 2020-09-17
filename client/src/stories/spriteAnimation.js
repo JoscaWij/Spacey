@@ -1,5 +1,8 @@
 import React, { useEffect, useRef } from "react";
-import { playerImage } from "./assets/spriteSheet";
+import playerImageSrc from "./assets/spriteSheet_example.png";
+
+const playerImage = new Image();
+playerImage.src = playerImageSrc;
 
 /*
 one image: 180 x 240 = srcWidth x srcHeight
