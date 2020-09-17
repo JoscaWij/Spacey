@@ -16,12 +16,19 @@ function clearCanvas(canvas, context) {
 
 function handleKeyDown(event) {
   movePlayer(event.code, player);
-  rotatePlayer(event.code, player);
+  rotatePlayer(event.code, player, DIRECTIONS);
 }
 
 const physics = {
   friction: 0.7,
   gravity: 1,
+};
+
+const DIRECTIONS = {
+  FRONT: "FRONT",
+  RIGHT: "RIGHT",
+  LEFT: "LEFT",
+  JUMPING: "JUMPING",
 };
 
 const player = {
@@ -32,7 +39,7 @@ const player = {
   offsetX: 0,
   offsetY: 0,
   jumping: true,
-  direction: "FRONT",
+  direction: DIRECTIONS.FRONT,
 };
 
 const floor = 500;
@@ -62,8 +69,8 @@ const Game = (props) => {
           player.offsetY = 0;
           player.top = floor - player.height;
           player.jumping = false;
-          if (player.direction === "JUMPING") {
-            player.direction = "FRONT";
+          if (player.direction === DIRECTIONS.JUMPING) {
+            player.direction = DIRECTIONS.FRONT;
           }
         }
 

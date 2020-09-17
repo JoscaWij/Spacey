@@ -1,9 +1,9 @@
-export default function rotatePlayer(keyCode, player) {
+export default function rotatePlayer(keyCode, player, DIRECTIONS) {
   if (keyCode === "ArrowRight") {
-    player.direction = "RIGHT";
+    player.direction = DIRECTIONS.RIGHT;
   } else if (keyCode === "ArrowLeft") {
-    player.direction = "LEFT";
+    player.direction = DIRECTIONS.LEFT;
   } else if (keyCode === "Space") {
-    player.direction = "JUMPING";
+    player.direction = DIRECTIONS.JUMPING;
   }
 }
