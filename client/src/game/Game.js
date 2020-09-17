@@ -30,6 +30,7 @@ const player = {
   offsetX: 0,
   offsetY: 0,
   jumping: true,
+  direction: "FRONT",
 };
 
 const floor = 500;
