@@ -1,14 +1,14 @@
 export default function drawPlattforms(context) {
+  const plattformHeight = 10;
+
   const plattforms = [
     {
       width: 50,
-      height: 10,
       left: 10,
       top: 400,
     },
     {
       width: 50,
-      height: 10,
       left: 100,
       top: 400,
     },
@@ -20,7 +20,7 @@ export default function drawPlattforms(context) {
       plattform.left,
       plattform.top,
       plattform.width,
-      plattform.height
+      plattformHeight
     )
   );
 }
