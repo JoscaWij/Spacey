@@ -15,25 +15,14 @@ function drawPlayerSprite(player, context) {
   const srcWidth = 180;
   const srcHeight = 240;
   const startCol = 0;
-  let startRow;
 
-  switch (direction) {
-    case "FRONT":
-      startRow = 0;
-      break;
-    case "LEFT":
-      startRow = 1;
-      break;
-    case "RIGHT":
-      startRow = 2;
-      break;
-    case "JUMPING":
-      startRow = 3;
-      break;
-    default:
-      startRow = 0;
-      break;
-  }
+  const directionRows = {
+    FRONT: 0,
+    LEFT: 1,
+    RIGHT: 2,
+    JUMPING: 3,
+  };
+  const startRow = directionRows[direction] || directionRows.FRONT;
 
   const srcX = srcWidth * startCol;
   const srcY = srcHeight * startRow;
