@@ -96,9 +96,16 @@ const SpriteAnimation = (props) => {
         requestAnimationFrame(gameLoop);
       };
       gameLoop();
-      window.addEventListener("keydown", (event) =>
-        rotatePlayer(event.code, player)
-      );
+
+      function handleKeyDown(event) {
+        rotatePlayer(event.code, player);
+      }
+
+      window.addEventListener("keydown", handleKeyDown);
+
+      return () => {
+        window.removeEventListener("keydown", handleKeyDown);
+      };
     }
     startGameLoop();
   }, []);
