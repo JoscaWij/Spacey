@@ -52,11 +52,9 @@ function draw(context) {
 function rotatePlayer(keyCode, player) {
   if (keyCode === "ArrowRight") {
     player.direction = "RIGHT";
-  }
-  if (keyCode === "ArrowLeft") {
+  } else if (keyCode === "ArrowLeft") {
     player.direction = "LEFT";
-  }
-  if (keyCode === "Space") {
+  } else if (keyCode === "Space") {
     player.direction = "JUMPING";
   }
 }
