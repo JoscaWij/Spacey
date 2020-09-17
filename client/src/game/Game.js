@@ -62,6 +62,9 @@ const Game = (props) => {
           player.offsetY = 0;
           player.top = floor - player.height;
           player.jumping = false;
+          if (player.direction === "JUMPING") {
+            player.direction = "FRONT";
+          }
         }
 
         requestAnimationFrame(gameLoop);
