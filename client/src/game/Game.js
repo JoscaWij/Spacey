@@ -36,10 +36,7 @@ const Game = (props) => {
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    const context = canvas.getContext("2d");
     resizeCanvas(canvas);
-
-    drawPlattforms(context);
 
     function startGameLoop() {
       const gameLoop = () => {
@@ -47,6 +44,7 @@ const Game = (props) => {
         const context = canvas.getContext("2d");
         clearCanvas(canvas, context);
         draw(context);
+        drawPlattforms(context);
 
         drawPlayer(player, context);
 

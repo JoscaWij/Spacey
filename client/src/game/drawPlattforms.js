@@ -1,3 +1,4 @@
-export default function drawPlattforms() {
-  console.log("Astronaut starts drawing cute little plattforms");
+export default function drawPlattforms(context) {
+  context.fillStyle = "#00cc66";
+  context.fillRect(10, 400, 50, 10);
 }
