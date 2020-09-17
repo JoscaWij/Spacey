@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import draw from "./draw";
 import drawPlayer from "./drawPlayer";
 import movePlayer from "./movePlayer";
+import rotatePlayer from "./rotatePlayer";
 
 function resizeCanvas(canvas) {
   //based on Ipone 6/7/8
@@ -15,6 +16,7 @@ function clearCanvas(canvas, context) {
 
 function handleKeyDown(event) {
   movePlayer(event.code, player);
+  rotatePlayer(event.code, player);
 }
 
 const physics = {
