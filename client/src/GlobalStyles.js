@@ -47,6 +47,12 @@ const GlobalStyles = () => {
           background-repeat: no-repeat;
         }
 
+        h1,
+        h2 {
+          font-family: "PermanentMarker";
+          font-weight: lighter;
+        }
+
         button {
           background-image: var(--button-gradient);
           background-color: transparent;
