@@ -3,6 +3,7 @@ import { Global, css } from "@emotion/core";
 import backgroundImageSrc from "./assets/backgroundImage.png";
 import RobotoMono from "./assets/fonts/RobotoMono-VariableFont_wght.ttf";
 import PermanentMarker from "./assets/fonts/PermanentMarker-Regular.ttf";
+import asteroidImageSrc from "./assets/asteroid.png";
 
 const GlobalStyles = () => {
   return (
@@ -50,9 +51,15 @@ const GlobalStyles = () => {
           background-image: var(--button-gradient);
           border-radius: 20px;
           border-style: none;
-          padding: 0.5em 1em;
+          padding: 0.5em 1.6em;
           font-family: "RobotoMono";
           color: #fff;
+        }
+
+        button:hover {
+          background-image: url(${asteroidImageSrc});
+          background-size: cover;
+          background-color: transparent;
         }
       `}
     />
