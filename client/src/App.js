@@ -34,7 +34,6 @@ function App() {
             </div>
           </Route>
           <Route path="/game">
-            <div>Game</div>
             <GamePage />
           </Route>
           <Route path="/">
