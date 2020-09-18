@@ -4,10 +4,12 @@ import styled from "@emotion/styled";
 
 const GameWrapper = styled.div`
   display: flex;
+  height: 100vh;
   justify-content: center;
+  align-items: center;
 `;
 
-function GamePage(props) {
+function GamePage() {
   return (
     <GameWrapper>
       <Game />
