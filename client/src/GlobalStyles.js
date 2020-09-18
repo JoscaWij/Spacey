@@ -2,6 +2,7 @@ import React from "react";
 import { Global, css } from "@emotion/core";
 import backgroundImageSrc from "./assets/backgroundImage.png";
 import RobotoMono from "./assets/fonts/RobotoMono-VariableFont_wght.ttf";
+import PermanentMarker from "./assets/fonts/PermanentMarker-Regular.ttf";
 
 const GlobalStyles = () => {
   return (
@@ -30,6 +31,10 @@ const GlobalStyles = () => {
           @font-face {
             font-family: "RobotoMono";
             src: url(${RobotoMono}) format("truetype");
+          }
+          @font-face {
+            font-family: "PermanentMarker";
+            src: url(${PermanentMarker}) format("truetype");
           }
         }
 
