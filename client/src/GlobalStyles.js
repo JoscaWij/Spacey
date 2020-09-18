@@ -1,5 +1,6 @@
 import React from "react";
 import { Global, css } from "@emotion/core";
+import backgroundImageSrc from "./assets/backgroundImage.png";
 
 const GlobalStyles = () => {
   return (
@@ -30,6 +31,9 @@ const GlobalStyles = () => {
         body {
           margin: 0;
           padding: 0;
+          background-image: url(${backgroundImageSrc});
+          background-size: cover;
+          background-repeat: no-repeat;
         }
       `}
     />
