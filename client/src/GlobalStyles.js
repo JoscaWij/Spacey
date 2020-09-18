@@ -16,7 +16,6 @@ const GlobalStyles = () => {
 
         :root {
           --highlight-color: #d9a491;
-          --highlight-shadow: 0 3 4 var(--highlight-color);
           --button-gradient: linear-gradient(
             to bottom,
             var(--highlight-color) 0%,
@@ -45,6 +44,15 @@ const GlobalStyles = () => {
           background-image: url(${backgroundImageSrc});
           background-size: cover;
           background-repeat: no-repeat;
+        }
+
+        button {
+          background-image: var(--button-gradient);
+          border-radius: 20px;
+          border-style: none;
+          padding: 0.5em 1em;
+          font-family: "RobotoMono";
+          color: #fff;
         }
       `}
     />
