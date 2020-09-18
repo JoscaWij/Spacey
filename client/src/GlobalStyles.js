@@ -49,6 +49,7 @@ const GlobalStyles = () => {
 
         button {
           background-image: var(--button-gradient);
+          background-color: transparent;
           border-radius: 20px;
           border-style: none;
           padding: 0.5em 1.6em;
