@@ -1,6 +1,7 @@
 import React from "react";
 import { Global, css } from "@emotion/core";
 import backgroundImageSrc from "./assets/backgroundImage.png";
+import RobotoMono from "./assets/fonts/RobotoMono-VariableFont_wght.ttf";
 
 const GlobalStyles = () => {
   return (
@@ -26,6 +27,10 @@ const GlobalStyles = () => {
         html {
           font-size: 14px;
           color: #fff;
+          @font-face {
+            font-family: "RobotoMono";
+            src: url(${RobotoMono}) format("truetype");
+          }
         }
 
         body {
