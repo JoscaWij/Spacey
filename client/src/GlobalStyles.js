@@ -21,6 +21,16 @@ const GlobalStyles = () => {
             #000000 100%
           );
         }
+
+        html {
+          font-size: 14px;
+          color: #fff;
+        }
+
+        body {
+          margin: 0;
+          padding: 0;
+        }
       `}
     />
   );
