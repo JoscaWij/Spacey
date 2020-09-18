@@ -36,6 +36,7 @@ const GlobalStyles = () => {
             font-family: "PermanentMarker";
             src: url(${PermanentMarker}) format("truetype");
           }
+          font-family: "RobotoMono";
         }
 
         body {
