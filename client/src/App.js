@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import Game from "./game/Game";
 import GlobalStyles from "./GlobalStyles";
+import MenuPage from "./page/MenuPage";
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
       <Router>
         <Switch>
           <Route path="/home">
-            <div className="App"></div>
+            <MenuPage />
           </Route>
           <Route path="/game">
             <div>Game</div>
