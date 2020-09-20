@@ -1,12 +1,21 @@
 import React from "react";
+import styled from "@emotion/styled";
 
-function MenuPage(props) {
+const MenuWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  align-items: center;
+  justify-content: space-around;
+`;
+
+function MenuPage() {
   return (
-    <div>
+    <MenuWrapper>
       <h1>Spacey</h1>
       <img src="" alt="Astronaut sitting on a little rocket" />
       <button>Button</button>
-    </div>
+    </MenuWrapper>
   );
 }
 
