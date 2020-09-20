@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
+import MenuImageSrc from "./../assets/AsteronautRakete.png";
 
 const MenuWrapper = styled.div`
   display: flex;
@@ -13,7 +14,7 @@ function MenuPage() {
   return (
     <MenuWrapper>
       <h1>Spacey</h1>
-      <img src="" alt="Astronaut sitting on a little rocket" />
+      <img src={MenuImageSrc} alt="Astronaut sitting on a little rocket" />
       <button>Button</button>
     </MenuWrapper>
   );
