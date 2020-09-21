@@ -8,17 +8,19 @@ const MenuWrapper = styled.div`
   display: flex;
   flex-direction: column;
   height: 100vh;
+  width: 100vw;
   align-items: center;
-  justify-content: space-around;
-  padding: 1.5em 1.5em 0 1.5em;
+  justify-content: space-between;
 `;
 
 const MenuImage = styled.img`
-  height: 55vh;
+  height: 45vh;
 `;
 
 const MenuBackgroundImage = styled.img`
-  width: 100vw;
+  width: 100%;
+  height: 12vh;
+  margin-top: 2em;
 `;
 
 const GameTitle = styled.h1`
