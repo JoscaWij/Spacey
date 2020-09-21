@@ -14,10 +14,15 @@ const MenuImage = styled.img`
   height: 55vh;
 `;
 
+const GameTitle = styled.h1`
+  font-size: 3rem;
+  -webkit-text-stroke: 1px #000;
+`;
+
 function MenuPage() {
   return (
     <MenuWrapper>
-      <h1>Spacey</h1>
+      <GameTitle>Spacey</GameTitle>
       <MenuImage
         src={MenuImageSrc}
         alt="Astronaut sitting on a little rocket"
