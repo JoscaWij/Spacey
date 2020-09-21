@@ -7,19 +7,19 @@ import { Link } from "react-router-dom";
 const MenuWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   align-items: center;
   justify-content: space-between;
 `;
 
 const MenuImage = styled.img`
-  height: 45vh;
+  height: 45%;
 `;
 
 const MenuBackgroundImage = styled.img`
   width: 100%;
-  height: 12vh;
+  height: 12%;
   margin-top: 2em;
 `;
 
