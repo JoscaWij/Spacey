@@ -68,6 +68,11 @@ const GlobalStyles = () => {
           background-size: cover;
           background-color: transparent;
         }
+
+        a {
+          text-decoration: none;
+          color: inherit;
+        }
       `}
     />
   );
