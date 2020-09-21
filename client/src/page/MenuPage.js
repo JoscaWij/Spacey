@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import MenuImageSrc from "./../assets/AsteronautRakete.png";
+import MenuImageSrc from "./../assets/asteronautRakete.png";
 import { Link } from "react-router-dom";
 
 const MenuWrapper = styled.div`
