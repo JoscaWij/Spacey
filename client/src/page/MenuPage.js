@@ -8,6 +8,7 @@ const MenuWrapper = styled.div`
   height: 100vh;
   align-items: center;
   justify-content: space-around;
+  padding: 1.5em;
 `;
 
 const MenuImage = styled.img`
@@ -20,6 +21,12 @@ const GameTitle = styled.h1`
   text-shadow: var(--highlight-color) 0 3px 5px;
 `;
 
+const MenuButton = styled.button`
+  font-size: 1.5em;
+  text-shadow: var(--highlight-color) 0 3px 5px;
+  margin: 1em 0;
+`;
+
 function MenuPage() {
   return (
     <MenuWrapper>
@@ -28,7 +35,7 @@ function MenuPage() {
         src={MenuImageSrc}
         alt="Astronaut sitting on a little rocket"
       />
-      <button>Button</button>
+      <MenuButton>Start game</MenuButton>
     </MenuWrapper>
   );
 }
