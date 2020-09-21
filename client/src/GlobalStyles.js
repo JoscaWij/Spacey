@@ -56,7 +56,7 @@ const GlobalStyles = () => {
         button {
           background-image: var(--button-gradient);
           background-color: transparent;
-          border-radius: 20px;
+          border-radius: 25px;
           border-style: none;
           padding: 0.5em 1.6em;
           font-family: "RobotoMono";
