@@ -38,7 +38,10 @@ const GlobalStyles = () => {
           }
         }
 
-        body {
+        body,
+        div {
+          height: 100vh;
+          width: 100vw;
           margin: 0;
           padding: 0;
           font-family: "RobotoMono";
