@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import MenuImageSrc from "./../assets/asteronautRakete.png";
+import MenuBackgroundImageSrc from "./../assets/planet.png";
 import { Link } from "react-router-dom";
 
 const MenuWrapper = styled.div`
@@ -9,11 +10,15 @@ const MenuWrapper = styled.div`
   height: 100vh;
   align-items: center;
   justify-content: space-around;
-  padding: 1.5em;
+  padding: 1.5em 1.5em 0 1.5em;
 `;
 
 const MenuImage = styled.img`
   height: 55vh;
+`;
+
+const MenuBackgroundImage = styled.img`
+  width: 100vw;
 `;
 
 const GameTitle = styled.h1`
@@ -40,6 +45,7 @@ function MenuPage() {
       <MenuButton>
         <Link to="/game">Start game</Link>
       </MenuButton>
+      <MenuBackgroundImage src={MenuBackgroundImageSrc} alt="planetside" />
     </MenuWrapper>
   );
 }
