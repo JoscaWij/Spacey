@@ -10,11 +10,18 @@ const MenuWrapper = styled.div`
   justify-content: space-around;
 `;
 
+const MenuImage = styled.img`
+  height: 55vh;
+`;
+
 function MenuPage() {
   return (
     <MenuWrapper>
       <h1>Spacey</h1>
-      <img src={MenuImageSrc} alt="Astronaut sitting on a little rocket" />
+      <MenuImage
+        src={MenuImageSrc}
+        alt="Astronaut sitting on a little rocket"
+      />
       <button>Button</button>
     </MenuWrapper>
   );
