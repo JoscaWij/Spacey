@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import MenuImageSrc from "./../assets/AsteronautRakete.png";
+import { Link } from "react-router-dom";
 
 const MenuWrapper = styled.div`
   display: flex;
@@ -36,7 +37,9 @@ function MenuPage() {
         src={MenuImageSrc}
         alt="Astronaut sitting on a little rocket"
       />
-      <MenuButton>Start game</MenuButton>
+      <MenuButton>
+        <Link to="/game">Start game</Link>
+      </MenuButton>
     </MenuWrapper>
   );
 }
