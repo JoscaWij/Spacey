@@ -64,6 +64,7 @@ const GlobalStyles = () => {
           padding: 0.5em 1.6em;
           font-family: "RobotoMono";
           color: #fff;
+          cursor: pointer;
         }
 
         button:hover {
