@@ -24,7 +24,8 @@ const GameTitle = styled.h1`
 const MenuButton = styled.button`
   font-size: 1.5em;
   text-shadow: var(--highlight-color) 0 3px 5px;
-  margin: 1em 0;
+  padding: 0.7em 1em;
+  margin: 1em;
 `;
 
 function MenuPage() {
