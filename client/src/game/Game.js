@@ -3,6 +3,7 @@ import draw from "./draw";
 import drawPlattforms from "./drawPlattforms";
 import drawPlayer from "./drawPlayer";
 import movePlayer from "./movePlayer";
+import { PLATTFOMRHEIGHT, plattforms } from "./plattforms";
 
 function resizeCanvas(canvas) {
   //based on Ipone 6/7/8
@@ -11,7 +12,7 @@ function resizeCanvas(canvas) {
 }
 
 function clearCanvas(canvas, context) {
-  context.clearRect(0, 0, canvas.widh, canvas.height);
+  context.clearRect(0, 0, canvas.width, canvas.height);
 }
 
 const physics = {
@@ -44,7 +45,7 @@ const Game = (props) => {
         const context = canvas.getContext("2d");
         clearCanvas(canvas, context);
         draw(context);
-        drawPlattforms(context);
+        drawPlattforms(context, PLATTFOMRHEIGHT, plattforms);
 
         drawPlayer(player, context);
 
