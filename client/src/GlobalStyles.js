@@ -38,10 +38,13 @@ const GlobalStyles = () => {
           }
         }
 
-        body,
-        div {
+        body {
           height: 100vh;
           width: 100vw;
+        }
+
+        body,
+        div {
           margin: 0;
           padding: 0;
           font-family: "RobotoMono";
@@ -59,17 +62,23 @@ const GlobalStyles = () => {
         button {
           background-image: var(--button-gradient);
           background-color: transparent;
-          border-radius: 20px;
+          border-radius: 25px;
           border-style: none;
           padding: 0.5em 1.6em;
           font-family: "RobotoMono";
           color: #fff;
+          cursor: pointer;
         }
 
         button:hover {
           background-image: url(${asteroidImageSrc});
           background-size: cover;
           background-color: transparent;
+        }
+
+        a {
+          text-decoration: none;
+          color: inherit;
         }
       `}
     />
