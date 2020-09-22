@@ -38,10 +38,13 @@ const GlobalStyles = () => {
           }
         }
 
-        body,
-        div {
+        body {
           height: 100vh;
           width: 100vw;
+        }
+
+        body,
+        div {
           margin: 0;
           padding: 0;
           font-family: "RobotoMono";
