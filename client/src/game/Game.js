@@ -15,6 +15,10 @@ function clearCanvas(canvas, context) {
   context.clearRect(0, 0, canvas.width, canvas.height);
 }
 
+function handleKeyDown(event) {
+  movePlayer(event.code, player);
+}
+
 const physics = {
   friction: 0.7,
   gravity: 1,
@@ -63,9 +67,12 @@ const Game = (props) => {
         requestAnimationFrame(gameLoop);
       };
       gameLoop();
-      window.addEventListener("keydown", (event) =>
-        movePlayer(event.code, player)
-      );
+
+      window.addEventListener("keydown", handleKeyDown);
+
+      return () => {
+        window.removeEventListener("keydown", handleKeyDown);
+      };
     }
     startGameLoop();
   }, []);
