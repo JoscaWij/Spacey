@@ -1,7 +1,9 @@
 import React, { useEffect, useRef } from "react";
 import draw from "./draw";
+import drawPlattforms from "./drawPlattforms";
 import drawPlayer from "./drawPlayer";
 import movePlayer from "./movePlayer";
+import { PLATTFOMRHEIGHT, plattforms } from "./plattforms";
 import rotatePlayer from "./rotatePlayer";
 
 function resizeCanvas(canvas) {
@@ -57,6 +59,7 @@ const Game = (props) => {
         const context = canvas.getContext("2d");
         clearCanvas(canvas, context);
         draw(context);
+        drawPlattforms(context, PLATTFOMRHEIGHT, plattforms);
 
         drawPlayer(player, context);
 
