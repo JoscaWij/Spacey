@@ -7,7 +7,8 @@ import {
   Redirect,
 } from "react-router-dom";
 import GlobalStyles from "./GlobalStyles";
-import GamePage from "./pages/GamePage";
+
+import GamePage from "./page/GamePage";
 
 function App() {
   return (
