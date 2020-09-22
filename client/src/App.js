@@ -5,9 +5,10 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-import Game from "./game/Game";
 import GlobalStyles from "./GlobalStyles";
 import MenuPage from "./page/MenuPage";
+
+import GamePage from "./page/GamePage";
 
 function App() {
   return (
@@ -19,8 +20,7 @@ function App() {
             <MenuPage />
           </Route>
           <Route path="/game">
-            <div>Game</div>
-            <Game />
+            <GamePage />
           </Route>
           <Route path="/">
             <Redirect to="/home" />
