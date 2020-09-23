@@ -57,10 +57,15 @@ export const gameLoop = (canvas) => {
 
   plattforms.find((platform) => {
     let distance = calcDistance(player, platform);
+
     const collisionDistance =
       player.height * player.height +
       (platform.width - player.width) * (platform.width - player.width);
-    if ((distance <= collisionDistance) & (player.top < platform.top)) {
+
+    if (
+      (distance < collisionDistance) &
+      (player.top < platform.top - player.height)
+    ) {
       console.log("jumping on plattform");
     }
   });
