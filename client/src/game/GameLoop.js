@@ -1,17 +1,10 @@
 import draw from "./draw";
 import drawPlattforms from "./drawPlattforms";
 import drawPlayer from "./drawPlayer";
-import movePlayer from "./movePlayer";
 import { PLATTFOMRHEIGHT, plattforms } from "./plattforms";
-import rotatePlayer from "./rotatePlayer";
 
 function clearCanvas(canvas, context) {
   context.clearRect(0, 0, canvas.width, canvas.height);
-}
-
-function handleKeyDown(event) {
-  movePlayer(event.code, player);
-  rotatePlayer(event.code, player, DIRECTIONS);
 }
 
 const physics = {
@@ -19,14 +12,14 @@ const physics = {
   gravity: 1,
 };
 
-const DIRECTIONS = {
+export const DIRECTIONS = {
   FRONT: "FRONT",
   RIGHT: "RIGHT",
   LEFT: "LEFT",
   JUMPING: "JUMPING",
 };
 
-const player = {
+export const player = {
   width: 30,
   height: 50,
   left: 10,
@@ -39,36 +32,26 @@ const player = {
 
 const floor = 500;
 
-export function startGameLoop() {
-  const gameLoop = (canvas) => {
-    const context = canvas.getContext("2d");
-    clearCanvas(canvas, context);
-    draw(context);
-    drawPlattforms(context, PLATTFOMRHEIGHT, plattforms);
+export const gameLoop = (canvas) => {
+  const context = canvas.getContext("2d");
+  clearCanvas(canvas, context);
+  draw(context);
+  drawPlattforms(context, PLATTFOMRHEIGHT, plattforms);
 
-    drawPlayer(player, context);
+  drawPlayer(player, context);
 
-    player.offsetX *= physics.friction;
-    player.left += player.offsetX;
-    player.offsetY += physics.gravity;
-    player.top += player.offsetY;
+  player.offsetX *= physics.friction;
+  player.left += player.offsetX;
+  player.offsetY += physics.gravity;
+  player.top += player.offsetY;
 
-    if (player.top > floor - player.height) {
-      player.offsetY = 0;
-      player.top = floor - player.height;
-      player.jumping = false;
-      if (player.direction === DIRECTIONS.JUMPING) {
-        player.direction = DIRECTIONS.FRONT;
-      }
+  if (player.top > floor - player.height) {
+    player.offsetY = 0;
+    player.top = floor - player.height;
+    player.jumping = false;
+    if (player.direction === DIRECTIONS.JUMPING) {
+      player.direction = DIRECTIONS.FRONT;
     }
-
-    requestAnimationFrame(gameLoop);
-  };
-  gameLoop();
-
-  window.addEventListener("keydown", handleKeyDown);
-
-  return () => {
-    window.removeEventListener("keydown", handleKeyDown);
-  };
-}
+  }
+  requestAnimationFrame(() => gameLoop(canvas));
+};
