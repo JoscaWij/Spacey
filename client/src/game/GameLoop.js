@@ -2,7 +2,6 @@ import draw from "./draw";
 import drawPlattforms from "./drawPlattforms";
 import drawPlayer from "./drawPlayer";
 import { PLATTFOMRHEIGHT, plattforms } from "./plattforms";
-import calcDistance from "./calcDistance";
 
 function clearCanvas(canvas, context) {
   context.clearRect(0, 0, canvas.width, canvas.height);
@@ -56,20 +55,15 @@ export const gameLoop = (canvas) => {
   }
 
   plattforms.find((platform) => {
-    let distance = calcDistance(player, platform);
-
-    const collisionDistance =
-      player.height * player.height +
-      (platform.width - player.width) * (platform.width - player.width);
-
     if (
-      (distance < collisionDistance) &
-      (player.top < platform.top - player.height)
+      player.top > platform.top &&
+      player.left > platform.left - 0.5 * player.width &&
+      player.left < platform.left + platform.width - 0.5 * player.width
     ) {
-      console.log("jumping on plattform");
       player.offsetY = 0;
       player.top = platform.top - player.height;
       player.jumping = false;
+      console.log(player.offsetY, player.top);
     }
   });
 
