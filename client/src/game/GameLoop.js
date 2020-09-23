@@ -60,7 +60,9 @@ export const gameLoop = (canvas) => {
     const collisionDistance =
       player.height * player.height +
       (platform.width - player.width) * (platform.width - player.width);
-    console.log(distance, collisionDistance);
+    if ((distance <= collisionDistance) & (player.top < platform.top)) {
+      console.log("jumping on plattform");
+    }
   });
 
   requestAnimationFrame(() => gameLoop(canvas));
