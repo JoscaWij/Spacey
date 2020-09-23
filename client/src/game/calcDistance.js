@@ -1,4 +1,4 @@
-export function calcDistance(player, obstacle) {
+export default function calcDistance(player, obstacle) {
   let topDistance = player.top - obstacle.top;
   let leftDistance = player.left - obstacle.left;
 
