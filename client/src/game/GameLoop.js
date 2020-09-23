@@ -67,6 +67,9 @@ export const gameLoop = (canvas) => {
       (player.top < platform.top - player.height)
     ) {
       console.log("jumping on plattform");
+      player.offsetY = 0;
+      player.top = platform.top - player.height;
+      player.jumping = false;
     }
   });
 
