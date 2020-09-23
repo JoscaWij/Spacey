@@ -2,6 +2,7 @@ import draw from "./draw";
 import drawPlattforms from "./drawPlattforms";
 import drawPlayer from "./drawPlayer";
 import { PLATTFOMRHEIGHT, plattforms } from "./plattforms";
+import calcDistance from "./calcDistance";
 
 function clearCanvas(canvas, context) {
   context.clearRect(0, 0, canvas.width, canvas.height);
@@ -53,5 +54,11 @@ export const gameLoop = (canvas) => {
       player.direction = DIRECTIONS.FRONT;
     }
   }
+
+  plattforms.find((platform) => {
+    let distance = calcDistance(player, platform);
+    console.log(distance);
+  });
+
   requestAnimationFrame(() => gameLoop(canvas));
 };
