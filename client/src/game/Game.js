@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import drawPlanetside from "./drawPlanetside";
 import { gameLoop, player, DIRECTIONS } from "./GameLoop";
 import movePlayer from "./movePlayer";
 import rotatePlayer from "./rotatePlayer";
@@ -20,6 +21,7 @@ const Game = (props) => {
   useEffect(() => {
     const canvas = canvasRef.current;
     resizeCanvas(canvas);
+    drawPlanetside();
 
     gameLoop(canvas);
 
