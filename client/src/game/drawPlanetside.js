@@ -4,7 +4,7 @@ const planetsideImage = new Image();
 planetsideImage.src = planetsideImageSrc;
 
 export default function drawPlanetside(canvas, context, floor) {
-  const planetsideTop = floor - 50;
+  const planetsideTop = floor - 40;
   const planetsideHeight = canvas.height - planetsideTop;
   context.beginPath();
   context.drawImage(
