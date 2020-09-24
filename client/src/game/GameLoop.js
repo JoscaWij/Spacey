@@ -1,4 +1,5 @@
 import draw from "./draw";
+import drawPlanetside from "./drawPlanetside";
 import drawPlattforms from "./drawPlattforms";
 import drawPlayer from "./drawPlayer";
 import { PLATTFOMRHEIGHT, plattforms } from "./plattforms";
@@ -35,6 +36,7 @@ const floor = 500;
 export const gameLoop = (canvas) => {
   const context = canvas.getContext("2d");
   clearCanvas(canvas, context);
+  drawPlanetside(canvas, context, floor);
   draw(context);
   drawPlattforms(context, PLATTFOMRHEIGHT, plattforms);
 
