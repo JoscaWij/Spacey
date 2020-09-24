@@ -24,6 +24,7 @@ export const player = {
   height: 50,
   left: 10,
   top: 200,
+  oldTop: 200,
   offsetX: 0,
   offsetY: 0,
   jumping: true,
@@ -39,6 +40,8 @@ export const gameLoop = (canvas) => {
   drawPlattforms(context, PLATTFOMRHEIGHT, plattforms);
 
   drawPlayer(player, context);
+
+  player.oldTop = player.top;
 
   player.offsetX *= physics.friction;
   player.left += player.offsetX;
@@ -56,7 +59,8 @@ export const gameLoop = (canvas) => {
 
   plattforms.find((platform) => {
     if (
-      player.top > platform.top &&
+      player.top > platform.top - player.height &&
+      player.oldTop < platform.top - 0.9 * player.height &&
       player.left > platform.left - 0.5 * player.width &&
       player.left < platform.left + platform.width - 0.5 * player.width
     ) {
