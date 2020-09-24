@@ -68,6 +68,9 @@ export const gameLoop = (canvas) => {
       player.offsetY = 0;
       player.top = platform.top - player.height;
       player.jumping = false;
+      if (player.direction === DIRECTIONS.JUMPING) {
+        player.direction = DIRECTIONS.FRONT;
+      }
     }
   }
 
