@@ -67,8 +67,8 @@ export const gameLoop = (canvas) => {
       player.offsetY = 0;
       player.top = platform.top - player.height;
       player.jumping = false;
-      console.log(player.offsetY, player.top);
     }
+    return true;
   });
 
   requestAnimationFrame(() => gameLoop(canvas));
