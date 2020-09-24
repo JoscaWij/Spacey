@@ -41,8 +41,6 @@ export const gameLoop = (canvas) => {
 
   drawPlayer(player, context);
 
-  player.oldTop = player.top;
-
   player.offsetX *= physics.friction;
   player.left += player.offsetX;
   player.offsetY += physics.gravity;
@@ -59,12 +57,10 @@ export const gameLoop = (canvas) => {
 
   for (let index = 0; index < plattforms.length; index++) {
     let platform = plattforms[index];
-    if (
-      player.top > platform.top - player.height &&
-      player.oldTop < platform.top - 0.9 * player.height &&
-      player.left > platform.left - 0.5 * player.width &&
-      player.left < platform.left + platform.width - 0.5 * player.width
-    ) {
+
+    const isPlayerOnPlatform = checkIfPlayerIsOnPlatform(platform);
+
+    if (isPlayerOnPlatform) {
       player.offsetY = 0;
       player.top = platform.top - player.height;
       player.jumping = false;
@@ -76,3 +72,13 @@ export const gameLoop = (canvas) => {
 
   requestAnimationFrame(() => gameLoop(canvas));
 };
+function checkIfPlayerIsOnPlatform(platform) {
+  const halfPlayerWidth = 0.5 * player.width;
+
+  return (
+    player.top > platform.top - player.height &&
+    player.top - player.offsetY < platform.top - 0.9 * player.height &&
+    player.left > platform.left - halfPlayerWidth &&
+    player.left < platform.left + halfPlayerWidth
+  );
+}
