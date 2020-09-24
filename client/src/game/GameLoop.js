@@ -25,13 +25,15 @@ export const player = {
   left: 10,
   top: 200,
   oldTop: 200,
-  offsetX: 0,
-  offsetY: 0,
+  speedX: 30,
+  speedY: 30,
   jumping: true,
   direction: DIRECTIONS.FRONT,
 };
 
 const floor = 500;
+
+let lastDrawingAt = null;
 
 export const gameLoop = (canvas) => {
   const context = canvas.getContext("2d");
@@ -40,14 +42,24 @@ export const gameLoop = (canvas) => {
   drawPlattforms(context, PLATTFOMRHEIGHT, plattforms);
 
   drawPlayer(player, context);
+  if (!lastDrawingAt) {
+    lastDrawingAt = Date.now();
+  }
+  const timeSinceLastDrawing = Date.now() - lastDrawingAt;
+  let offsetX = 0;
+  if (player.direction === DIRECTIONS.RIGHT) {
+    offsetX = (player.speedX * timeSinceLastDrawing) / 1000;
+  } else if (player.direction === DIRECTIONS.LEFT) {
+    offsetX = (-player.speedX * timeSinceLastDrawing) / 1000;
+  }
+  const offsetY = 0;
 
-  player.offsetX *= physics.friction;
-  player.left += player.offsetX;
-  player.offsetY += physics.gravity;
-  player.top += player.offsetY;
+  /* player.speedX *= physics.friction; */
+  player.left += offsetX;
+  player.speedY += physics.gravity;
+  player.top += offsetY;
 
   if (player.top > floor - player.height) {
-    player.offsetY = 0;
     player.top = floor - player.height;
     player.jumping = false;
     if (player.direction === DIRECTIONS.JUMPING) {
@@ -61,7 +73,6 @@ export const gameLoop = (canvas) => {
     const isPlayerOnPlatform = checkIfPlayerIsOnPlatform(platform);
 
     if (isPlayerOnPlatform) {
-      player.offsetY = 0;
       player.top = platform.top - player.height;
       player.jumping = false;
       if (player.direction === DIRECTIONS.JUMPING) {
@@ -70,6 +81,8 @@ export const gameLoop = (canvas) => {
     }
   }
 
+  lastDrawingAt = Date.now();
+
   requestAnimationFrame(() => gameLoop(canvas));
 };
 function checkIfPlayerIsOnPlatform(platform) {
@@ -77,7 +90,7 @@ function checkIfPlayerIsOnPlatform(platform) {
 
   return (
     player.top > platform.top - player.height &&
-    player.top - player.offsetY < platform.top - 0.9 * player.height &&
+    player.top - player.speedY < platform.top - 0.9 * player.height &&
     player.left > platform.left - halfPlayerWidth &&
     player.left < platform.left + halfPlayerWidth
   );
