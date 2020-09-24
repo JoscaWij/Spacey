@@ -37,7 +37,7 @@ export const gameLoop = (canvas) => {
   const context = canvas.getContext("2d");
   clearCanvas(canvas, context);
   drawPlanetside(canvas, context, floor);
-  draw(context);
+  draw(context, floor);
   drawPlattforms(context, PLATTFOMRHEIGHT, plattforms);
 
   drawPlayer(player, context);
