@@ -57,7 +57,8 @@ export const gameLoop = (canvas) => {
     }
   }
 
-  plattforms.find((platform) => {
+  for (let index = 0; index < plattforms.length; index++) {
+    let platform = plattforms[index];
     if (
       player.top > platform.top - player.height &&
       player.oldTop < platform.top - 0.9 * player.height &&
@@ -68,8 +69,7 @@ export const gameLoop = (canvas) => {
       player.top = platform.top - player.height;
       player.jumping = false;
     }
-    return true;
-  });
+  }
 
   requestAnimationFrame(() => gameLoop(canvas));
 };
