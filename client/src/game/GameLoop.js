@@ -7,10 +7,7 @@ function clearCanvas(canvas, context) {
   context.clearRect(0, 0, canvas.width, canvas.height);
 }
 
-const physics = {
-  friction: 0.7,
-  gravity: 1,
-};
+const GRAVITY = 7;
 
 export const DIRECTIONS = {
   FRONT: "FRONT",
@@ -52,11 +49,9 @@ export const gameLoop = (canvas) => {
   } else if (player.direction === DIRECTIONS.LEFT) {
     offsetX = (-player.speedX * timeSinceLastDrawing) / 1000;
   }
-  const offsetY = 0;
+  const offsetY = GRAVITY;
 
-  /* player.speedX *= physics.friction; */
   player.left += offsetX;
-  player.speedY += physics.gravity;
   player.top += offsetY;
 
   if (player.top > floor - player.height) {
