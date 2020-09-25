@@ -18,6 +18,11 @@ function handleKeyDown(event) {
   const direction = directionKeyCodes[event.code];
   if (direction) {
     rotatePlayer(player, direction);
+    if (direction === DIRECTIONS.JUMPING && player.jumping) {
+      return;
+    } else if (direction === DIRECTIONS.JUMPING) {
+      player.jumping = true;
+    }
   }
 }
 
