@@ -23,7 +23,7 @@ export const player = {
   top: 200,
   oldTop: 200,
   speedX: 30,
-  speedY: 30,
+  speedY: 10,
   jumping: true,
   direction: DIRECTIONS.FRONT,
 };
@@ -49,7 +49,11 @@ export const gameLoop = (canvas) => {
   } else if (player.direction === DIRECTIONS.LEFT) {
     offsetX = (-player.speedX * timeSinceLastDrawing) / 1000;
   }
-  const offsetY = GRAVITY;
+  let offsetY = GRAVITY;
+  if (player.direction === DIRECTIONS.JUMPING && player.jumping) {
+    offsetY = -player.speedY;
+    setTimeout(() => stopPlayerJumping(), 1200);
+  }
 
   player.left += offsetX;
   player.top += offsetY;
@@ -87,6 +91,10 @@ function checkIfPlayerIsOnPlatform(platform) {
     player.top > platform.top - player.height &&
     player.top - player.speedY < platform.top - 0.9 * player.height &&
     player.left > platform.left - halfPlayerWidth &&
-    player.left < platform.left + halfPlayerWidth
+    player.left < platform.left + platform.width - halfPlayerWidth
   );
 }
+
+const stopPlayerJumping = () => {
+  player.jumping = false;
+};
