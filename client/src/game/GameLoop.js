@@ -9,6 +9,14 @@ function clearCanvas(canvas, context) {
 
 const GRAVITY = 7;
 
+export let keyState = {};
+
+const DIRECTIONKEYS = {
+  RIGHT: "ArrowRight",
+  LEFT: "ArrowLeft",
+  UP: "Space",
+};
+
 export const DIRECTIONS = {
   FRONT: "FRONT",
   RIGHT: "RIGHT",
@@ -22,7 +30,7 @@ export const player = {
   left: 10,
   top: 200,
   oldTop: 200,
-  speedX: 30,
+  speedX: 90,
   speedY: 10,
   jumping: true,
   direction: DIRECTIONS.FRONT,
@@ -44,13 +52,13 @@ export const gameLoop = (canvas) => {
   }
   const timeSinceLastDrawing = Date.now() - lastDrawingAt;
   let offsetX = 0;
-  if (player.direction === DIRECTIONS.RIGHT) {
+  if (keyState[DIRECTIONKEYS.RIGHT]) {
     offsetX = (player.speedX * timeSinceLastDrawing) / 1000;
-  } else if (player.direction === DIRECTIONS.LEFT) {
+  } else if (keyState[DIRECTIONKEYS.LEFT]) {
     offsetX = (-player.speedX * timeSinceLastDrawing) / 1000;
   }
   let offsetY = GRAVITY;
-  if (player.direction === DIRECTIONS.JUMPING && player.jumping) {
+  if (keyState[DIRECTIONKEYS.UP]) {
     offsetY = -player.speedY;
     setTimeout(() => stopPlayerJumping(), 1200);
   }
