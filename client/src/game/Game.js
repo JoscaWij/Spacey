@@ -2,10 +2,11 @@ import React, { useEffect, useRef } from "react";
 import {
   gameLoop,
   player,
-  /* DIRECTIONS, */ keyState,
+  keyState,
   DIRECTIONKEYS,
+  DIRECTIONS,
 } from "./GameLoop";
-/* import rotatePlayer from "./rotatePlayer"; */
+import rotatePlayer from "./rotatePlayer";
 
 function resizeCanvas(canvas) {
   //based on Ipone 6/7/8
@@ -13,9 +14,18 @@ function resizeCanvas(canvas) {
   canvas.height = 667;
 }
 
+const directionKeyCodes = {
+  ArrowRight: DIRECTIONS.RIGHT,
+  ArrowLeft: DIRECTIONS.LEFT,
+  Space: DIRECTIONS.JUMPING,
+};
+
 function handleKeyDown(event) {
-  /*   const direction = directionKeyCodes[event.code]; */
   keyState[event.code] = true;
+  const direction = directionKeyCodes[event.code];
+  if (direction) {
+    rotatePlayer(player, direction);
+  }
 
   if (keyState[DIRECTIONKEYS.UP] && player.isAbleToJump & !player.isJumping) {
     player.isJumping = true;
@@ -24,17 +34,14 @@ function handleKeyDown(event) {
       player.isJumping = false;
     }, 300);
   }
-  /*   if (direction) {
-    rotatePlayer(player, direction);
-  } */
 }
 
 function handleKeyUp(event) {
-  /*   const direction = directionKeyCodes[event.code]; */
   keyState[event.code] = false;
-  /*   if (direction && direction === player.direction) {
+  const direction = directionKeyCodes[event.code];
+  if (direction && direction === player.direction) {
     rotatePlayer(player, DIRECTIONS.FRONT);
-  } */
+  }
 }
 
 const Game = (props) => {
