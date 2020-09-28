@@ -7,8 +7,7 @@ import {
 } from "react-router-dom";
 import GlobalStyles from "./GlobalStyles";
 import MenuPage from "./page/MenuPage";
-
-import GamePage from "./page/GamePage";
+import IntroPage from "./page/IntroPage";
 
 function App() {
   return (
@@ -19,8 +18,8 @@ function App() {
           <Route path="/home">
             <MenuPage />
           </Route>
-          <Route path="/game">
-            <GamePage />
+          <Route path="/game/intro">
+            <IntroPage />
           </Route>
           <Route path="/">
             <Redirect to="/home" />
