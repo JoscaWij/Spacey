@@ -32,7 +32,8 @@ export const player = {
   oldTop: 200,
   speedX: 90,
   speedY: 450,
-  jumping: false,
+  isJumping: false,
+  isAbleToJump: false,
   direction: DIRECTIONS.FRONT,
 };
 
@@ -58,7 +59,7 @@ export const gameLoop = (canvas) => {
     offsetX = (-player.speedX * timeSinceLastDrawing) / 1000;
   }
   let offsetY = GRAVITY;
-  if (keyState[DIRECTIONKEYS.UP] && player.jumping) {
+  if (player.isJumping) {
     offsetY = (-player.speedY * timeSinceLastDrawing) / 1000;
   }
 
@@ -67,7 +68,7 @@ export const gameLoop = (canvas) => {
 
   if (player.top > floor - player.height) {
     player.top = floor - player.height;
-    player.jumping = false;
+    player.isAbleToJump = true;
     if (player.direction === DIRECTIONS.JUMPING) {
       player.direction = DIRECTIONS.FRONT;
     }
@@ -80,7 +81,7 @@ export const gameLoop = (canvas) => {
 
     if (isPlayerOnPlatform) {
       player.top = platform.top - player.height;
-      player.jumping = false;
+      player.isAbleToJump = true;
       if (player.direction === DIRECTIONS.JUMPING) {
         player.direction = DIRECTIONS.FRONT;
       }
@@ -93,11 +94,24 @@ export const gameLoop = (canvas) => {
 };
 function checkIfPlayerIsOnPlatform(platform) {
   const halfPlayerWidth = 0.5 * player.width;
+  const playerTopOnLastDrawing =
+    player.top - player.offSetY || player.top - GRAVITY;
+
+  const playerFallsIntoPlatformRec = player.top > platform.top - player.height;
+
+  const halfPlayerisMoreLeftThanLeftPlatformEdge =
+    player.left > platform.left - halfPlayerWidth;
+
+  const halfPlayerIsLessLeftThanRightPlatformEdge =
+    player.left < platform.left + platform.width - halfPlayerWidth;
+
+  const playerOnLastDrawingIs90PercentAbovePlatform =
+    playerTopOnLastDrawing < platform.top - 0.9 * player.height;
 
   return (
-    player.top > platform.top - player.height &&
-    player.top - player.speedY < platform.top - 0.9 * player.height &&
-    player.left > platform.left - halfPlayerWidth &&
-    player.left < platform.left + platform.width - halfPlayerWidth
+    playerFallsIntoPlatformRec &&
+    playerOnLastDrawingIs90PercentAbovePlatform &&
+    halfPlayerisMoreLeftThanLeftPlatformEdge &&
+    halfPlayerIsLessLeftThanRightPlatformEdge
   );
 }
