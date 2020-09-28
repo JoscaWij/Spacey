@@ -16,12 +16,12 @@ function resizeCanvas(canvas) {
 function handleKeyDown(event) {
   /*   const direction = directionKeyCodes[event.code]; */
   keyState[event.code] = true;
-  const keyIsStillPressed = event.repeat;
 
-  if (keyState[DIRECTIONKEYS.UP] && !keyIsStillPressed) {
-    player.jumping = true;
+  if (keyState[DIRECTIONKEYS.UP] && player.isAbleToJump & !player.isJumping) {
+    player.isJumping = true;
+    player.isAbleToJump = false;
     setTimeout(() => {
-      player.jumping = false;
+      player.isJumping = false;
     }, 300);
   }
   /*   if (direction) {
