@@ -11,7 +11,7 @@ const GRAVITY = 7;
 
 export let keyState = {};
 
-const DIRECTIONKEYS = {
+export const DIRECTIONKEYS = {
   RIGHT: "ArrowRight",
   LEFT: "ArrowLeft",
   UP: "Space",
@@ -31,8 +31,8 @@ export const player = {
   top: 200,
   oldTop: 200,
   speedX: 90,
-  speedY: 10,
-  jumping: true,
+  speedY: 450,
+  jumping: false,
   direction: DIRECTIONS.FRONT,
 };
 
@@ -58,9 +58,8 @@ export const gameLoop = (canvas) => {
     offsetX = (-player.speedX * timeSinceLastDrawing) / 1000;
   }
   let offsetY = GRAVITY;
-  if (keyState[DIRECTIONKEYS.UP]) {
-    offsetY = -player.speedY;
-    setTimeout(() => stopPlayerJumping(), 1200);
+  if (keyState[DIRECTIONKEYS.UP] && player.jumping) {
+    offsetY = (-player.speedY * timeSinceLastDrawing) / 1000;
   }
 
   player.left += offsetX;
@@ -102,7 +101,3 @@ function checkIfPlayerIsOnPlatform(platform) {
     player.left < platform.left + platform.width - halfPlayerWidth
   );
 }
-
-const stopPlayerJumping = () => {
-  player.jumping = false;
-};
