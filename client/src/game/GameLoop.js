@@ -1,3 +1,4 @@
+import checkIfPlayerIsOnPlatform from "./checkIfPlayerIsOnPlatform";
 import draw from "./draw";
 import drawPlattforms from "./drawPlattforms";
 import drawPlayer from "./drawPlayer";
@@ -7,7 +8,7 @@ function clearCanvas(canvas, context) {
   context.clearRect(0, 0, canvas.width, canvas.height);
 }
 
-const GRAVITY = 7;
+export const GRAVITY = 7;
 
 export let keyState = {};
 
@@ -66,7 +67,9 @@ export const gameLoop = (canvas) => {
   player.left += offsetX;
   player.top += offsetY;
 
-  if (player.top > floor - player.height) {
+  const isPlayerOnFloor = player.top > floor - player.height;
+
+  if (isPlayerOnFloor) {
     player.top = floor - player.height;
     player.isAbleToJump = true;
     if (player.direction === DIRECTIONS.JUMPING) {
@@ -92,26 +95,3 @@ export const gameLoop = (canvas) => {
 
   requestAnimationFrame(() => gameLoop(canvas));
 };
-function checkIfPlayerIsOnPlatform(platform) {
-  const halfPlayerWidth = 0.5 * player.width;
-  const playerTopOnLastDrawing =
-    player.top - player.offSetY || player.top - GRAVITY;
-
-  const playerFallsIntoPlatformRec = player.top > platform.top - player.height;
-
-  const halfPlayerisMoreLeftThanLeftPlatformEdge =
-    player.left > platform.left - halfPlayerWidth;
-
-  const halfPlayerIsLessLeftThanRightPlatformEdge =
-    player.left < platform.left + platform.width - halfPlayerWidth;
-
-  const playerOnLastDrawingIs90PercentAbovePlatform =
-    playerTopOnLastDrawing < platform.top - 0.9 * player.height;
-
-  return (
-    playerFallsIntoPlatformRec &&
-    playerOnLastDrawingIs90PercentAbovePlatform &&
-    halfPlayerisMoreLeftThanLeftPlatformEdge &&
-    halfPlayerIsLessLeftThanRightPlatformEdge
-  );
-}
