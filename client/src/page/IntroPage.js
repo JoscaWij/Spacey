@@ -2,6 +2,9 @@ import React from "react";
 import OutlinedContainer from "../components/OutlinedContainer";
 import styled from "@emotion/styled";
 import { PageWrapper } from "../components/PageWrapper";
+import IconArrowLeftSrc from "../assets/IconArrowLeft.svg";
+import IconArrowRightSrc from "../assets/IconArrowRight.svg";
+import IconSpraceSrc from "../assets/IconSpace.svg";
 
 const IntroPageWrapper = styled(PageWrapper)`
   display: flex;
@@ -36,9 +39,10 @@ function IntroPage() {
             back to his spaceship as soon as possible. Can you help him to get
             back? Its very easy. You can use the
           </p>
-          <img src="" alt="arrow left" /> <img src="" alt="arrow right" />{" "}
+          <img src={IconArrowLeftSrc} alt="arrow left" />
+          <img src={IconArrowRightSrc} alt="arrow right" />
           <p>keys to walk. And</p>
-          <img src="" alt="Space key" /> <p>Space to jump.</p>
+          <img src={IconSpraceSrc} alt="Space key" /> <p>Space to jump.</p>
         </IntroTextbox>
       </OutlinedContainer>
     </IntroPageWrapper>
