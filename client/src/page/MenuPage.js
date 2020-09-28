@@ -16,7 +16,7 @@ function MenuPage() {
         alt="Astronaut sitting on a little rocket"
       />
       <MenuButton>
-        <Link to="/game">Start game</Link>
+        <Link to="/game/intro">Start game</Link>
       </MenuButton>
       <MenuBackgroundImage src={MenuBackgroundImageSrc} alt="planetside" />
     </MenuWrapper>
