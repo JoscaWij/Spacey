@@ -1,5 +1,10 @@
 import React, { useEffect, useRef } from "react";
-import { gameLoop, /*  player, DIRECTIONS, */ keyState } from "./GameLoop";
+import {
+  gameLoop,
+  player,
+  /* DIRECTIONS, */ keyState,
+  DIRECTIONKEYS,
+} from "./GameLoop";
 /* import rotatePlayer from "./rotatePlayer"; */
 
 function resizeCanvas(canvas) {
@@ -11,6 +16,14 @@ function resizeCanvas(canvas) {
 function handleKeyDown(event) {
   /*   const direction = directionKeyCodes[event.code]; */
   keyState[event.code] = true;
+  const keyIsStillPressed = event.repeat;
+
+  if (keyState[DIRECTIONKEYS.UP] && !keyIsStillPressed) {
+    player.jumping = true;
+    setTimeout(() => {
+      player.jumping = false;
+    }, 300);
+  }
   /*   if (direction) {
     rotatePlayer(player, direction);
   } */
