@@ -15,13 +15,13 @@ const IntroTextbox = styled.div`
   flex-wrap: wrap;
   align-content: space-around;
   height: 100%;
+  text-align: center;
 
   *:first-child {
     font-family: PermanentMarker;
     flex-basis: 100%;
     font-size: 1.5em;
     font-weight: lighter;
-    text-align: center;
   }
 `;
 
@@ -34,8 +34,11 @@ function IntroPage() {
           <p>
             The little astronaut is stranded on a lonley planet. He needs to get
             back to his spaceship as soon as possible. Can you help him to get
-            back? Its very easy. You can use the keys to walk. And the to jump.
+            back? Its very easy. You can use the
           </p>
+          <img src="" alt="arrow left" /> <img src="" alt="arrow right" />{" "}
+          <p>keys to walk. And</p>
+          <img src="" alt="Space key" /> <p>Space to jump.</p>
         </IntroTextbox>
       </OutlinedContainer>
     </IntroPageWrapper>
