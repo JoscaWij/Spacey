@@ -17,14 +17,35 @@ const IntroTextbox = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-content: space-around;
+  justify-content: center;
   height: 100%;
-  text-align: center;
+  font-size: 1em;
 
-  *:first-child {
+  span {
+    :first-child {
+      font-size: 1.5em;
+    }
+    font-size: 1em;
     font-family: PermanentMarker;
     flex-basis: 100%;
-    font-size: 1.5em;
     font-weight: lighter;
+  }
+
+  * {
+    text-align: center;
+    flex-basis: 100%;
+  }
+`;
+
+const ImageCenteredContainer = styled.div`
+  background: transparent;
+  display: flex;
+
+  *:first-child {
+    margin-left: 30%;
+  }
+  *:last-child {
+    margin-right: 30%;
   }
 `;
 
@@ -36,11 +57,14 @@ function IntroPage() {
           <span>Please help!</span>
           <p>
             The little astronaut is stranded on a lonley planet. He needs to get
-            back to his spaceship as soon as possible. Can you help him to get
-            back? Its very easy. You can use the
+            back to his spaceship as soon as possible.
           </p>
-          <img src={IconArrowLeftSrc} alt="arrow left" />
-          <img src={IconArrowRightSrc} alt="arrow right" />
+          <span>Can you help him to get back?</span>
+          <p>Its very easy. You can use the</p>
+          <ImageCenteredContainer>
+            <img src={IconArrowLeftSrc} alt="arrow left" />
+            <img src={IconArrowRightSrc} alt="arrow right" />
+          </ImageCenteredContainer>
           <p>keys to walk. And</p>
           <img src={IconSpraceSrc} alt="Space key" /> <p>Space to jump.</p>
         </IntroTextbox>
