@@ -15,9 +15,9 @@ function resizeCanvas(canvas) {
 }
 
 const directionKeyCodes = {
-  ArrowRight: DIRECTIONS.RIGHT,
-  ArrowLeft: DIRECTIONS.LEFT,
-  Space: DIRECTIONS.JUMPING,
+  [DIRECTION_KEYS.RIGHT]: DIRECTIONS.RIGHT,
+  [DIRECTION_KEYS.LEFT]: DIRECTIONS.LEFT,
+  [DIRECTION_KEYS.UP]: DIRECTIONS.JUMPING,
 };
 
 function handleKeyDown(event) {
