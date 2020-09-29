@@ -1,7 +1,7 @@
 import checkIfPlayerIsOnPlatform from "./checkIfPlayerIsOnPlatform";
 import { DIRECTIONS } from "./GameLoop";
 
-const isPlayerOnAnyPlatform = (player, plattforms) => {
+const letPlayerStandOnPlatform = (player, plattforms) => {
   for (let index = 0; index < plattforms.length; index++) {
     let platform = plattforms[index];
 
@@ -13,8 +13,9 @@ const isPlayerOnAnyPlatform = (player, plattforms) => {
       if (player.direction === DIRECTIONS.JUMPING) {
         player.direction = DIRECTIONS.FRONT;
       }
+      return true;
     }
   }
 };
 
-export default isPlayerOnAnyPlatform;
+export default letPlayerStandOnPlatform;
