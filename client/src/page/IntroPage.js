@@ -5,6 +5,7 @@ import { PageWrapper } from "../components/PageWrapper";
 import IconArrowLeftSrc from "../assets/IconArrowLeft.svg";
 import IconArrowRightSrc from "../assets/IconArrowRight.svg";
 import IconSpraceSrc from "../assets/IconSpace.svg";
+import ProceedButton from "../components/ProceedButton";
 
 const IntroPageWrapper = styled(PageWrapper)`
   display: flex;
@@ -68,6 +69,7 @@ function IntroPage() {
           <p>keys to walk. And</p>
           <img src={IconSpraceSrc} alt="Space key" /> <p>Space to jump.</p>
         </IntroTextbox>
+        <ProceedButton />
       </OutlinedContainer>
     </IntroPageWrapper>
   );
