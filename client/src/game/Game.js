@@ -8,10 +8,18 @@ import {
 } from "./GameLoop";
 import rotatePlayer from "./rotatePlayer";
 
-function resizeCanvas(canvas) {
+export const CANVAS_SIZE = {
+  width: 375,
+  height: 800,
+};
+
+function resizeCanvas(canvas, CANVAS_SIZE) {
   //based on Ipone 6/7/8
-  canvas.width = 375;
-  canvas.height = 667;
+  /*   canvas.width = 375;
+  canvas.height = 667; */
+
+  canvas.width = CANVAS_SIZE.width;
+  canvas.height = CANVAS_SIZE.height;
 }
 
 const directionKeyCodes = {
@@ -53,7 +61,7 @@ const Game = (props) => {
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    resizeCanvas(canvas);
+    resizeCanvas(canvas, CANVAS_SIZE);
 
     gameLoop(canvas);
 
