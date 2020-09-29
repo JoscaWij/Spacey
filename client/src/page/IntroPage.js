@@ -7,6 +7,33 @@ import IconArrowRightSrc from "../assets/IconArrowRight.svg";
 import IconSpraceSrc from "../assets/IconSpace.svg";
 import ProceedButton from "../components/ProceedButton";
 
+function IntroPage() {
+  return (
+    <IntroPageWrapper>
+      <OutlinedContainer>
+        <IntroTextbox>
+          <span>Please help!</span>
+          <p>
+            The little astronaut is stranded on a lonley planet. He needs to get
+            back to his spaceship as soon as possible.
+          </p>
+          <span>Can you help him to get back?</span>
+          <p>Its very easy. You can use the</p>
+          <ImageCenteredContainer>
+            <img src={IconArrowLeftSrc} alt="arrow left" />
+            <img src={IconArrowRightSrc} alt="arrow right" />
+          </ImageCenteredContainer>
+          <p>keys to walk. And</p>
+          <img src={IconSpraceSrc} alt="Space key" /> <p>Space to jump.</p>
+        </IntroTextbox>
+        <ProceedButton path="/game" />
+      </OutlinedContainer>
+    </IntroPageWrapper>
+  );
+}
+
+export default IntroPage;
+
 const IntroPageWrapper = styled(PageWrapper)`
   display: flex;
   justify-content: center;
@@ -49,30 +76,3 @@ const ImageCenteredContainer = styled.div`
     margin-right: 30%;
   }
 `;
-
-function IntroPage() {
-  return (
-    <IntroPageWrapper>
-      <OutlinedContainer>
-        <IntroTextbox>
-          <span>Please help!</span>
-          <p>
-            The little astronaut is stranded on a lonley planet. He needs to get
-            back to his spaceship as soon as possible.
-          </p>
-          <span>Can you help him to get back?</span>
-          <p>Its very easy. You can use the</p>
-          <ImageCenteredContainer>
-            <img src={IconArrowLeftSrc} alt="arrow left" />
-            <img src={IconArrowRightSrc} alt="arrow right" />
-          </ImageCenteredContainer>
-          <p>keys to walk. And</p>
-          <img src={IconSpraceSrc} alt="Space key" /> <p>Space to jump.</p>
-        </IntroTextbox>
-        <ProceedButton />
-      </OutlinedContainer>
-    </IntroPageWrapper>
-  );
-}
-
-export default IntroPage;
