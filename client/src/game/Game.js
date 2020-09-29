@@ -3,7 +3,7 @@ import {
   gameLoop,
   player,
   keyState,
-  DIRECTIONKEYS,
+  DIRECTION_KEYS,
   DIRECTIONS,
 } from "./GameLoop";
 import rotatePlayer from "./rotatePlayer";
@@ -27,7 +27,7 @@ function handleKeyDown(event) {
     rotatePlayer(player, direction);
   }
 
-  if (keyState[DIRECTIONKEYS.UP] && player.isAbleToJump) {
+  if (keyState[DIRECTION_KEYS.UP] && player.isAbleToJump) {
     player.isJumping = true;
     player.isAbleToJump = false;
     setTimeout(() => {

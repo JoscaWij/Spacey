@@ -12,7 +12,7 @@ export const GRAVITY = 7;
 
 export let keyState = {};
 
-export const DIRECTIONKEYS = {
+export const DIRECTION_KEYS = {
   RIGHT: "ArrowRight",
   LEFT: "ArrowLeft",
   UP: "Space",
@@ -54,9 +54,9 @@ export const gameLoop = (canvas) => {
   }
   const timeSinceLastDrawing = Date.now() - lastDrawingAt;
   let offsetX = 0;
-  if (keyState[DIRECTIONKEYS.RIGHT]) {
+  if (keyState[DIRECTION_KEYS.RIGHT]) {
     offsetX = (player.speedX * timeSinceLastDrawing) / 1000;
-  } else if (keyState[DIRECTIONKEYS.LEFT]) {
+  } else if (keyState[DIRECTION_KEYS.LEFT]) {
     offsetX = (-player.speedX * timeSinceLastDrawing) / 1000;
   }
   let offsetY = GRAVITY;
