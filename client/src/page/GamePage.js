@@ -1,16 +1,17 @@
 import React from "react";
-import Game from "../game/Game";
 import styled from "@emotion/styled";
 import { PageWrapper } from "../components/PageWrapper";
+import GameViewport from "../game/GameViewport";
 
 const GameWrapper = styled(PageWrapper)`
   justify-content: center;
+  align-items: center;
 `;
 
 function GamePage() {
   return (
     <GameWrapper>
-      <Game />
+      <GameViewport />
     </GameWrapper>
   );
 }
