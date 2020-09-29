@@ -10,7 +10,7 @@ function clearCanvas(canvas, context) {
 
 export const GRAVITY = 7;
 
-export let activeKeys = {};
+export const activeKeys = {};
 
 export const DIRECTION_KEYS = {
   RIGHT: "ArrowRight",
