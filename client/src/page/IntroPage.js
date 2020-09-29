@@ -53,7 +53,7 @@ const IntroTextbox = styled.div`
     :first-child {
       font-size: 1.5em;
     }
-    font-size: 1em;
+    font-size: 1.1em;
     font-family: PermanentMarker;
     flex-basis: 100%;
     font-weight: lighter;
