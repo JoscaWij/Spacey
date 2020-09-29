@@ -21,26 +21,30 @@ const directionKeyCodes = {
 };
 
 function handleKeyDown(event) {
-  activeKeys[event.code] = true;
-  const direction = directionKeyCodes[event.code];
-  if (direction) {
-    rotatePlayer(player, direction);
-  }
+  if (directionKeyCodes[event.code]) {
+    activeKeys[event.code] = true;
+    const direction = directionKeyCodes[event.code];
+    if (direction) {
+      rotatePlayer(player, direction);
+    }
 
-  if (activeKeys[DIRECTION_KEYS.UP] && player.isAbleToJump) {
-    player.isJumping = true;
-    player.isAbleToJump = false;
-    setTimeout(() => {
-      player.isJumping = false;
-    }, 300);
+    if (activeKeys[DIRECTION_KEYS.UP] && player.isAbleToJump) {
+      player.isJumping = true;
+      player.isAbleToJump = false;
+      setTimeout(() => {
+        player.isJumping = false;
+      }, 300);
+    }
   }
 }
 
 function handleKeyUp(event) {
-  activeKeys[event.code] = false;
-  const direction = directionKeyCodes[event.code];
-  if (direction && direction === player.direction) {
-    rotatePlayer(player, DIRECTIONS.FRONT);
+  if (directionKeyCodes[event.code]) {
+    activeKeys[event.code] = false;
+    const direction = directionKeyCodes[event.code];
+    if (direction && direction === player.direction) {
+      rotatePlayer(player, DIRECTIONS.FRONT);
+    }
   }
 }
 
