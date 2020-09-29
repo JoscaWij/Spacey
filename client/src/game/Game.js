@@ -27,7 +27,7 @@ function handleKeyDown(event) {
     rotatePlayer(player, direction);
   }
 
-  if (keyState[DIRECTIONKEYS.UP] && player.isAbleToJump & !player.isJumping) {
+  if (keyState[DIRECTIONKEYS.UP] && player.isAbleToJump) {
     player.isJumping = true;
     player.isAbleToJump = false;
     setTimeout(() => {
