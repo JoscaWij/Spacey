@@ -1,7 +1,7 @@
 import draw from "./draw";
 import drawPlattforms from "./drawPlattforms";
 import drawPlayer from "./drawPlayer";
-import isPlayerOnAnyPlatform from "./isPlayerOnAnyPlatform";
+import letPlayerStandOnPlatform from "./letPlayerStandOnPlatform";
 import { PLATTFOMRHEIGHT, plattforms } from "./plattforms";
 
 function clearCanvas(canvas, context) {
@@ -77,7 +77,11 @@ export const gameLoop = (canvas) => {
     }
   }
 
-  isPlayerOnAnyPlatform(player, plattforms);
+  const isPlayerOnPlatform = letPlayerStandOnPlatform(player, plattforms);
+
+  if (!isPlayerOnFloor && !isPlayerOnPlatform) {
+    player.isAbleToJump = false;
+  }
 
   lastDrawingAt = Date.now();
 
