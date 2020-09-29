@@ -4,6 +4,9 @@ import proceedImageSrc from "./../assets/IconArrow_proceed.svg";
 
 const ImageButton = styled.button`
   background: none;
+  :hover {
+    background: none;
+  }
 `;
 
 const ProceedButton = () => {
