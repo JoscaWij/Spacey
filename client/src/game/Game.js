@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import {
   gameLoop,
   player,
-  keyState,
+  activeKeys,
   DIRECTION_KEYS,
   DIRECTIONS,
 } from "./GameLoop";
@@ -21,13 +21,13 @@ const directionKeyCodes = {
 };
 
 function handleKeyDown(event) {
-  keyState[event.code] = true;
+  activeKeys[event.code] = true;
   const direction = directionKeyCodes[event.code];
   if (direction) {
     rotatePlayer(player, direction);
   }
 
-  if (keyState[DIRECTION_KEYS.UP] && player.isAbleToJump) {
+  if (activeKeys[DIRECTION_KEYS.UP] && player.isAbleToJump) {
     player.isJumping = true;
     player.isAbleToJump = false;
     setTimeout(() => {
@@ -37,7 +37,7 @@ function handleKeyDown(event) {
 }
 
 function handleKeyUp(event) {
-  keyState[event.code] = false;
+  activeKeys[event.code] = false;
   const direction = directionKeyCodes[event.code];
   if (direction && direction === player.direction) {
     rotatePlayer(player, DIRECTIONS.FRONT);

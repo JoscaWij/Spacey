@@ -10,7 +10,7 @@ function clearCanvas(canvas, context) {
 
 export const GRAVITY = 7;
 
-export let keyState = {};
+export let activeKeys = {};
 
 export const DIRECTION_KEYS = {
   RIGHT: "ArrowRight",
@@ -54,9 +54,9 @@ export const gameLoop = (canvas) => {
   }
   const timeSinceLastDrawing = Date.now() - lastDrawingAt;
   let offsetX = 0;
-  if (keyState[DIRECTION_KEYS.RIGHT]) {
+  if (activeKeys[DIRECTION_KEYS.RIGHT]) {
     offsetX = (player.speedX * timeSinceLastDrawing) / 1000;
-  } else if (keyState[DIRECTION_KEYS.LEFT]) {
+  } else if (activeKeys[DIRECTION_KEYS.LEFT]) {
     offsetX = (-player.speedX * timeSinceLastDrawing) / 1000;
   }
   let offsetY = GRAVITY;
