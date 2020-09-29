@@ -1,15 +1,21 @@
 import draw from "./draw";
 import drawPlattforms from "./drawPlattforms";
 import drawPlayer from "./drawPlayer";
+import letPlayerStandOnPlatform from "./letPlayerStandOnPlatform";
 import { PLATTFOMRHEIGHT, plattforms } from "./plattforms";
 
 function clearCanvas(canvas, context) {
   context.clearRect(0, 0, canvas.width, canvas.height);
 }
 
-const physics = {
-  friction: 0.7,
-  gravity: 1,
+export const GRAVITY = 7;
+
+export const activeKeys = {};
+
+export const DIRECTION_KEYS = {
+  RIGHT: "ArrowRight",
+  LEFT: "ArrowLeft",
+  UP: "Space",
 };
 
 export const DIRECTIONS = {
@@ -24,13 +30,17 @@ export const player = {
   height: 50,
   left: 10,
   top: 200,
-  offsetX: 0,
-  offsetY: 0,
-  jumping: true,
+  oldTop: 200,
+  speedX: 100,
+  speedY: 500,
+  isJumping: false,
+  isAbleToJump: false,
   direction: DIRECTIONS.FRONT,
 };
 
 const floor = 500;
+
+let lastDrawingAt = null;
 
 export const gameLoop = (canvas) => {
   const context = canvas.getContext("2d");
@@ -39,19 +49,41 @@ export const gameLoop = (canvas) => {
   drawPlattforms(context, PLATTFOMRHEIGHT, plattforms);
 
   drawPlayer(player, context);
+  if (!lastDrawingAt) {
+    lastDrawingAt = Date.now();
+  }
+  const timeSinceLastDrawing = Date.now() - lastDrawingAt;
+  let offsetX = 0;
+  if (activeKeys[DIRECTION_KEYS.RIGHT]) {
+    offsetX = (player.speedX * timeSinceLastDrawing) / 1000;
+  } else if (activeKeys[DIRECTION_KEYS.LEFT]) {
+    offsetX = (-player.speedX * timeSinceLastDrawing) / 1000;
+  }
+  let offsetY = GRAVITY;
+  if (player.isJumping) {
+    offsetY = (-player.speedY * timeSinceLastDrawing) / 1000;
+  }
 
-  player.offsetX *= physics.friction;
-  player.left += player.offsetX;
-  player.offsetY += physics.gravity;
-  player.top += player.offsetY;
+  player.left += offsetX;
+  player.top += offsetY;
 
-  if (player.top > floor - player.height) {
-    player.offsetY = 0;
+  const isPlayerOnFloor = player.top > floor - player.height;
+
+  if (isPlayerOnFloor) {
     player.top = floor - player.height;
-    player.jumping = false;
+    player.isAbleToJump = true;
     if (player.direction === DIRECTIONS.JUMPING) {
       player.direction = DIRECTIONS.FRONT;
     }
   }
+
+  const isPlayerOnPlatform = letPlayerStandOnPlatform(player, plattforms);
+
+  if (!isPlayerOnFloor && !isPlayerOnPlatform) {
+    player.isAbleToJump = false;
+  }
+
+  lastDrawingAt = Date.now();
+
   requestAnimationFrame(() => gameLoop(canvas));
 };
