@@ -2,7 +2,7 @@ import React from "react";
 import GameViewport from "../game/GameViewport";
 
 export default {
-  title: "Game/Game",
+  title: "Game/Camera",
   component: GameViewport,
 };
 
