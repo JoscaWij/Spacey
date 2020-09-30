@@ -1,6 +1,6 @@
 import React from "react";
-import Game, { CANVAS_SIZE } from "./Game";
-import { VIEWPORT_SIZE } from "./viewport";
+import Game from "./Game";
+import { calcViewportTopOffset, VIEWPORT_SIZE } from "./viewport";
 import styled from "@emotion/styled";
 
 const CameraContainer = styled.div`
@@ -10,7 +10,7 @@ const CameraContainer = styled.div`
 
   canvas {
     position: relative;
-    top: ${`${CANVAS_SIZE.width}px`};
+    top: ${`${calcViewportTopOffset()}px`};
   }
 `;
 
