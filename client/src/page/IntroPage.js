@@ -15,7 +15,7 @@ function IntroPage() {
           <span>Please help!</span>
           <p>
             The little astronaut is stranded on a lonley planet. He needs to get
-            back to his spaceship as soon as possible.
+            back to his spaceship as soon as possible. No time to lose!
           </p>
           <span>Can you help him to get back?</span>
           <p>Its very easy. You can use the</p>
@@ -24,7 +24,8 @@ function IntroPage() {
             <img src={IconArrowRightSrc} alt="arrow right" />
           </ImageCenteredContainer>
           <p>keys to walk. And</p>
-          <img src={IconSpraceSrc} alt="Space key" /> <p>Space to jump.</p>
+          <img src={IconSpraceSrc} alt="Space key" />
+          <p>Space to jump.</p>
         </IntroTextbox>
         <ProceedButton path="/game" />
       </OutlinedContainer>
