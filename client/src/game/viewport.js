@@ -1,9 +1,16 @@
+import { CANVAS_SIZE } from "./Game";
+import { player } from "./GameLoop";
+
 export const VIEWPORT_SIZE = {
   width: 375,
   height: 667,
 };
 
 export const calcViewportTopOffset = () => {
-  const topOffset = 300;
-  return topOffset;
+  if (player.top > CANVAS_SIZE.height - VIEWPORT_SIZE.height) {
+    console.log(CANVAS_SIZE.height - VIEWPORT_SIZE.height);
+    return -(CANVAS_SIZE.height - VIEWPORT_SIZE.height);
+  } else {
+    return 200;
+  }
 };
