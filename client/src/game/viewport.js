@@ -9,7 +9,9 @@ export const VIEWPORT_SIZE = {
 export const calcViewportTopOffset = () => {
   if (player.top > CANVAS_SIZE.height - 0.5 * VIEWPORT_SIZE.height) {
     return -(CANVAS_SIZE.height - VIEWPORT_SIZE.height);
+  } else if (player.top < 0.5 * VIEWPORT_SIZE.height) {
+    return 0;
   } else {
-    return 100;
+    return -(player.top + 0.5 * player.height - 0.5 * VIEWPORT_SIZE.height);
   }
 };
