@@ -29,7 +29,7 @@ export const player = {
   width: 30,
   height: 50,
   left: 10,
-  top: 200,
+  top: 1850,
   oldTop: 200,
   speedX: 100,
   speedY: 500,
@@ -38,14 +38,14 @@ export const player = {
   direction: DIRECTIONS.FRONT,
 };
 
-const floor = 500;
+const floor = 1900;
 
 let lastDrawingAt = null;
 
 export const gameLoop = (canvas) => {
   const context = canvas.getContext("2d");
   clearCanvas(canvas, context);
-  draw(context);
+  draw(context, floor);
   drawPlattforms(context, PLATTFOMRHEIGHT, plattforms);
 
   drawPlayer(player, context);

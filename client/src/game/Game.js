@@ -10,7 +10,7 @@ import rotatePlayer from "./rotatePlayer";
 
 export const CANVAS_SIZE = {
   width: 375,
-  height: 1500,
+  height: 2000,
 };
 
 function resizeCanvas(canvas) {
