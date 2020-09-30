@@ -1,5 +1,5 @@
 import React from "react";
-import Game from "./Game";
+import Game, { CANVAS_SIZE } from "./Game";
 import styled from "@emotion/styled";
 
 const VIEWPORT_SIZE = {
@@ -15,7 +15,15 @@ const CameraContainer = styled.div`
 
   canvas {
     position: relative;
-    top: 200px;
+    animation: scrollingcamera linear 6s;
+  }
+  @keyframes scrollingcamera {
+    from {
+      top: ${`${-(CANVAS_SIZE.height - VIEWPORT_SIZE.height)}px`};
+    }
+    to {
+      top: 0px;
+    }
   }
 `;
 
