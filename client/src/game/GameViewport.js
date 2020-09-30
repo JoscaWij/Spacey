@@ -1,5 +1,6 @@
 import React from "react";
-import Game, { CANVAS_SIZE, VIEWPORT_SIZE } from "../game/Game";
+import Game, { CANVAS_SIZE } from "./Game";
+import { VIEWPORT_SIZE } from "./viewport";
 import styled from "@emotion/styled";
 
 const CameraContainer = styled.div`

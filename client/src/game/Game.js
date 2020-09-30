@@ -8,11 +8,6 @@ import {
 } from "./GameLoop";
 import rotatePlayer from "./rotatePlayer";
 
-export const VIEWPORT_SIZE = {
-  width: 375,
-  height: 667,
-};
-
 export const CANVAS_SIZE = {
   width: 375,
   height: 800,
