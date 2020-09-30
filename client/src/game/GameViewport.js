@@ -7,6 +7,11 @@ const CameraContainer = styled.div`
   height: 667px;
   background: transparent;
   overflow-y: hidden;
+
+  canvas {
+    position: relative;
+    top: 200px;
+  }
 `;
 
 const GameViewport = () => {
