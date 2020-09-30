@@ -50,7 +50,7 @@ const IntroTextbox = styled.div`
   font-size: 1em;
 
   span {
-    :first-child {
+    :first-of-type {
       font-size: 1.5em;
     }
     font-size: 1.1em;
@@ -69,7 +69,7 @@ const ImageCenteredContainer = styled.div`
   background: transparent;
   display: flex;
 
-  *:first-child {
+  *:first-of-type {
     margin-left: 30%;
   }
   *:last-child {
