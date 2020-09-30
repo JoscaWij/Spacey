@@ -12,12 +12,12 @@ const InvisableButtonWrapper = styled.button`
   }
 `;
 
-function BackButton() {
+function BackToMenuButton() {
   return (
     <InvisableButtonWrapper>
-      <img src={gobackButtonImageSrc} alt="Go back button" />
+      <img src={gobackButtonImageSrc} alt="Go back to Menu" />
     </InvisableButtonWrapper>
   );
 }
 
-export default BackButton;
+export default BackToMenuButton;
