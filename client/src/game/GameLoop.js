@@ -29,7 +29,7 @@ export const player = {
   width: 30,
   height: 50,
   left: 10,
-  top: 200,
+  top: 1350,
   oldTop: 200,
   speedX: 100,
   speedY: 500,
@@ -38,7 +38,7 @@ export const player = {
   direction: DIRECTIONS.FRONT,
 };
 
-const floor = 500;
+const floor = 1400;
 
 let lastDrawingAt = null;
 
