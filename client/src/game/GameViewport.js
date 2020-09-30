@@ -1,10 +1,10 @@
 import React from "react";
-import Game, { CANVAS_SIZE } from "../game/Game";
+import Game, { CANVAS_SIZE, VIEWPORT_SIZE } from "../game/Game";
 import styled from "@emotion/styled";
 
 const CameraContainer = styled.div`
-  width: 375px;
-  height: 667px;
+  width: ${`${VIEWPORT_SIZE.width}px`};
+  height: ${`${VIEWPORT_SIZE.height}px`};
   overflow-y: hidden;
 
   canvas {
