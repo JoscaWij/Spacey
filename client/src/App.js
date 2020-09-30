@@ -7,8 +7,7 @@ import {
 } from "react-router-dom";
 import GlobalStyles from "./GlobalStyles";
 import MenuPage from "./page/MenuPage";
-
-import GamePage from "./page/GamePage";
+import GameViewport from "./game/GameViewport";
 
 function App() {
   return (
@@ -20,7 +19,7 @@ function App() {
             <MenuPage />
           </Route>
           <Route path="/game">
-            <GamePage />
+            <GameViewport />
           </Route>
           <Route path="/">
             <Redirect to="/home" />
