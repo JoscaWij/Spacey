@@ -5,9 +5,10 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-import Game from "./game/Game";
 import GlobalStyles from "./GlobalStyles";
 import MenuPage from "./page/MenuPage";
+import GamePage from "./page/GamePage";
+import IntroPage from "./page/IntroPage";
 
 function App() {
   return (
@@ -18,11 +19,13 @@ function App() {
           <Route path="/home">
             <MenuPage />
           </Route>
-          <Route path="/game">
-            <div>Game</div>
-            <Game />
+          <Route path="/game/intro">
+            <IntroPage />
           </Route>
-          <Route path="/">
+          <Route path="/game">
+            <GamePage />
+          </Route>
+          <Route exact path="/">
             <Redirect to="/home" />
           </Route>
         </Switch>

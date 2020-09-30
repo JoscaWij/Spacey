@@ -1,7 +1,11 @@
 import React, { useEffect, useRef } from "react";
-import draw from "./draw";
-import drawPlayer from "./drawPlayer";
-import movePlayer from "./movePlayer";
+import {
+  gameLoop,
+  player,
+  activeKeys,
+  DIRECTION_KEYS,
+  DIRECTIONS,
+} from "./GameLoop";
 import rotatePlayer from "./rotatePlayer";
 
 function resizeCanvas(canvas) {
@@ -10,39 +14,39 @@ function resizeCanvas(canvas) {
   canvas.height = 667;
 }
 
-function clearCanvas(canvas, context) {
-  context.clearRect(0, 0, canvas.widh, canvas.height);
-}
+const directionKeyCodes = {
+  [DIRECTION_KEYS.RIGHT]: DIRECTIONS.RIGHT,
+  [DIRECTION_KEYS.LEFT]: DIRECTIONS.LEFT,
+  [DIRECTION_KEYS.UP]: DIRECTIONS.JUMPING,
+};
 
 function handleKeyDown(event) {
-  movePlayer(event.code, player);
-  rotatePlayer(event.code, player, DIRECTIONS);
+  if (directionKeyCodes[event.code]) {
+    activeKeys[event.code] = true;
+    const direction = directionKeyCodes[event.code];
+    if (direction) {
+      rotatePlayer(player, direction);
+    }
+
+    if (activeKeys[DIRECTION_KEYS.UP] && player.isAbleToJump) {
+      player.isJumping = true;
+      player.isAbleToJump = false;
+      setTimeout(() => {
+        player.isJumping = false;
+      }, 300);
+    }
+  }
 }
 
-const physics = {
-  friction: 0.7,
-  gravity: 1,
-};
-
-const DIRECTIONS = {
-  FRONT: "FRONT",
-  RIGHT: "RIGHT",
-  LEFT: "LEFT",
-  JUMPING: "JUMPING",
-};
-
-const player = {
-  width: 30,
-  height: 50,
-  left: 10,
-  top: 200,
-  offsetX: 0,
-  offsetY: 0,
-  jumping: true,
-  direction: DIRECTIONS.FRONT,
-};
-
-const floor = 500;
+function handleKeyUp(event) {
+  if (directionKeyCodes[event.code]) {
+    activeKeys[event.code] = false;
+    const direction = directionKeyCodes[event.code];
+    if (direction && direction === player.direction) {
+      rotatePlayer(player, DIRECTIONS.FRONT);
+    }
+  }
+}
 
 const Game = (props) => {
   const canvasRef = useRef(null);
@@ -51,40 +55,15 @@ const Game = (props) => {
     const canvas = canvasRef.current;
     resizeCanvas(canvas);
 
-    function startGameLoop() {
-      const gameLoop = () => {
-        const canvas = canvasRef.current;
-        const context = canvas.getContext("2d");
-        clearCanvas(canvas, context);
-        draw(context);
+    gameLoop(canvas);
 
-        drawPlayer(player, context);
+    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("keyup", handleKeyUp);
 
-        player.offsetX *= physics.friction;
-        player.left += player.offsetX;
-        player.offsetY += physics.gravity;
-        player.top += player.offsetY;
-
-        if (player.top > floor - player.height) {
-          player.offsetY = 0;
-          player.top = floor - player.height;
-          player.jumping = false;
-          if (player.direction === DIRECTIONS.JUMPING) {
-            player.direction = DIRECTIONS.FRONT;
-          }
-        }
-
-        requestAnimationFrame(gameLoop);
-      };
-      gameLoop();
-
-      window.addEventListener("keydown", handleKeyDown);
-
-      return () => {
-        window.removeEventListener("keydown", handleKeyDown);
-      };
-    }
-    startGameLoop();
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("keyup", handleKeyUp);
+    };
   }, []);
 
   return <canvas ref={canvasRef} {...props} />;
