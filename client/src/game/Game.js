@@ -7,6 +7,7 @@ import {
   DIRECTIONS,
 } from "./GameLoop";
 import rotatePlayer from "./rotatePlayer";
+import styled from "@emotion/styled";
 
 export const CANVAS_SIZE = {
   width: 375,
@@ -57,14 +58,15 @@ function handleKeyUp(event) {
 }
 
 const Game = (props) => {
+  const [viewportTopPosition, setViewportTopPosition] = React.useState("300px");
   const canvasRef = useRef(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     resizeCanvas(canvas, CANVAS_SIZE);
 
-    gameLoop(canvas);
-
+    gameLoop(canvas, setViewportTopPosition);
+    console.log(viewportTopPosition);
     window.addEventListener("keydown", handleKeyDown);
     window.addEventListener("keyup", handleKeyUp);
 
@@ -72,9 +74,15 @@ const Game = (props) => {
       window.removeEventListener("keydown", handleKeyDown);
       window.removeEventListener("keyup", handleKeyUp);
     };
-  }, []);
+  }, [viewportTopPosition]);
 
-  return <canvas ref={canvasRef} {...props} />;
+  return <GameCanvas ref={canvasRef} top={viewportTopPosition} />;
 };
 
 export default Game;
+
+const GameCanvas = styled.canvas`
+  background: #fff;
+  position: relative;
+  top: ${(props) => `${props.top}px`};
+`;
