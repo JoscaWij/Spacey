@@ -15,7 +15,7 @@ const CameraContainer = styled.div`
 
   canvas {
     position: relative;
-    animation: scrollingcamera linear 6s;
+    animation: scrollingcamera linear 30s;
   }
   @keyframes scrollingcamera {
     from {
