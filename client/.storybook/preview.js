@@ -1,5 +1,6 @@
 import GlobalStyles from "../src/GlobalStyles";
 import React from "react";
+import { BrowserRouter as Router } from "react-router-dom";
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
   layout: "fullscreen",
@@ -7,7 +8,10 @@ export const parameters = {
 const withGlobalStyles = (Story, context) => {
   return (
     <>
-      <GlobalStyles /> <Story {...context} />
+      <GlobalStyles />
+      <Router>
+        <Story {...context} />
+      </Router>
     </>
   );
 };
