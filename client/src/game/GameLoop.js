@@ -3,6 +3,7 @@ import drawPlattforms from "./drawPlattforms";
 import drawPlayer from "./drawPlayer";
 import letPlayerStandOnPlatform from "./letPlayerStandOnPlatform";
 import { PLATTFOMRHEIGHT, plattforms } from "./plattforms";
+import { calcViewportTopOffset } from "./viewport";
 
 function clearCanvas(canvas, context) {
   context.clearRect(0, 0, canvas.width, canvas.height);
@@ -42,7 +43,7 @@ const floor = 1400;
 
 let lastDrawingAt = null;
 
-export const gameLoop = (canvas) => {
+export const gameLoop = (canvas, setViewportTopPosition) => {
   const context = canvas.getContext("2d");
   clearCanvas(canvas, context);
   draw(context);
@@ -83,7 +84,9 @@ export const gameLoop = (canvas) => {
     player.isAbleToJump = false;
   }
 
+  setViewportTopPosition(() => calcViewportTopOffset());
+
   lastDrawingAt = Date.now();
 
-  requestAnimationFrame(() => gameLoop(canvas));
+  requestAnimationFrame(() => gameLoop(canvas, setViewportTopPosition));
 };
