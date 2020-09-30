@@ -9,7 +9,7 @@ import {
 import rotatePlayer from "./rotatePlayer";
 
 export const VIEWPORT_SIZE = {
-  widht: 375,
+  width: 375,
   height: 667,
 };
 
