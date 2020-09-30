@@ -8,10 +8,15 @@ import {
 } from "./GameLoop";
 import rotatePlayer from "./rotatePlayer";
 
+export const CANVAS_SIZE = {
+  width: 375,
+  height: 667,
+};
+
 function resizeCanvas(canvas) {
   //based on Ipone 6/7/8
-  canvas.width = 375;
-  canvas.height = 667;
+  canvas.width = CANVAS_SIZE.width;
+  canvas.height = CANVAS_SIZE.height;
 }
 
 const directionKeyCodes = {
