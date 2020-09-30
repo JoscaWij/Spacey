@@ -49,6 +49,7 @@ const IntroTextbox = styled.div`
   justify-content: center;
   height: 100%;
   font-size: 1em;
+  line-height: 2em;
 
   span {
     :first-of-type {
