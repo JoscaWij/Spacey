@@ -4,31 +4,31 @@ export const plattforms = [
   {
     width: 50,
     left: 10,
-    top: 400,
+    top: 1300,
   },
   {
     width: 50,
     left: 100,
-    top: 400,
+    top: 1300,
   },
   {
     width: 80,
     left: 300,
-    top: 350,
+    top: 1250,
   },
   {
     width: 100,
     left: 100,
-    top: 300,
+    top: 1200,
   },
   {
-    width: 60,
+    width: 80,
     left: 10,
-    top: 200,
+    top: 1100,
   },
   {
     width: 70,
     left: 100,
-    top: 100,
+    top: 1000,
   },
 ];
