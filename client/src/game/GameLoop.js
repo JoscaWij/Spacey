@@ -1,4 +1,4 @@
-import draw from "./draw";
+import drawPlanetside from "./drawPlanetside";
 import drawPlattforms from "./drawPlattforms";
 import drawPlayer from "./drawPlayer";
 import letPlayerStandOnPlatform from "./letPlayerStandOnPlatform";
@@ -38,14 +38,14 @@ export const player = {
   direction: DIRECTIONS.FRONT,
 };
 
-const floor = 500;
+const floor = 650;
 
 let lastDrawingAt = null;
 
 export const gameLoop = (canvas) => {
   const context = canvas.getContext("2d");
   clearCanvas(canvas, context);
-  draw(context);
+  drawPlanetside(canvas, context, floor);
   drawPlattforms(context, PLATTFOMRHEIGHT, plattforms);
 
   drawPlayer(player, context);
