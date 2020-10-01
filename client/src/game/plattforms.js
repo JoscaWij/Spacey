@@ -1,4 +1,4 @@
-export const PLATTFOMRHEIGHT = 10;
+export const PLATTFOMRHEIGHT = 40;
 
 export const plattforms = [
   {

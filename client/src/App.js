@@ -8,6 +8,7 @@ import {
 import GlobalStyles from "./GlobalStyles";
 import MenuPage from "./page/MenuPage";
 import GameViewport from "./game/GameViewport";
+import IntroPage from "./page/IntroPage";
 
 function App() {
   return (
@@ -18,10 +19,13 @@ function App() {
           <Route path="/home">
             <MenuPage />
           </Route>
+          <Route path="/game/intro">
+            <IntroPage />
+          </Route>
           <Route path="/game">
             <GameViewport />
           </Route>
-          <Route path="/">
+          <Route exact path="/">
             <Redirect to="/home" />
           </Route>
         </Switch>
