@@ -31,14 +31,14 @@ export const player = {
   left: 10,
   top: 1850,
   oldTop: 200,
-  speedX: 100,
-  speedY: 500,
+  speedX: 150,
+  speedY: 400,
   isJumping: false,
   isAbleToJump: false,
   direction: DIRECTIONS.FRONT,
 };
 
-const floor = 1900;
+const floor = 1980;
 
 let lastDrawingAt = null;
 
