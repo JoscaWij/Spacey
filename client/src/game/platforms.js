@@ -1,6 +1,6 @@
-export const PLATTFOMRHEIGHT = 40;
+export const PLATFOMRHEIGHT = 40;
 
-export const plattforms = [
+export const platforms = [
   {
     width: 50,
     left: 10,
