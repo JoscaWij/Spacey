@@ -18,7 +18,10 @@ const CameraContainer = styled.div`
     animation: scrollingcamera linear 30s;
   }
   @keyframes scrollingcamera {
-    from {
+    0% {
+      top: ${`${-(CANVAS_SIZE.height - VIEWPORT_SIZE.height)}px`};
+    }
+    5% {
       top: ${`${-(CANVAS_SIZE.height - VIEWPORT_SIZE.height)}px`};
     }
     to {
