@@ -5,6 +5,9 @@ import styled from "@emotion/styled";
 const InvisableButtonWrapper = styled.button`
   padding: 0;
   background: none;
+  position: fixed;
+  top: 1.3em;
+  left: 1.3em;
 
   :hover {
     background: none;
