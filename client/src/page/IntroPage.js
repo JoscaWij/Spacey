@@ -6,10 +6,12 @@ import IconArrowLeftSrc from "../assets/IconArrowLeft.svg";
 import IconArrowRightSrc from "../assets/IconArrowRight.svg";
 import IconSpraceSrc from "../assets/IconSpace.svg";
 import ProceedButton from "../components/ProceedButton";
+import BackToMenuButton from "../components/BackToMenuButton";
 
 function IntroPage() {
   return (
     <IntroPageWrapper>
+      <BackToMenuButton />
       <OutlinedContainer>
         <IntroTextbox>
           <span>Please help!</span>
