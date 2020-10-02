@@ -6,8 +6,9 @@ import lostInSpaceImageSrc from "../assets/playerJumping.png";
 const EndPageWrapper = styled(PageWrapper)`
   justify-content: center;
 
-  image {
+  img {
     margin: 2em;
+    height: 35%;
   }
 `;
 
