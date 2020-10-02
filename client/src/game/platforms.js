@@ -129,7 +129,7 @@ export const platforms = [
   {
     width: 40,
     left: 300,
-    top: 730,
+    top: 750,
   },
   {
     width: 80,
