@@ -3,11 +3,20 @@ import styled from "@emotion/styled";
 import { PageWrapper } from "../components/PageWrapper";
 
 const EndPageWrapper = styled(PageWrapper)`
-  align-content: center;
+  justify-content: center;
+
+  image {
+    margin: 2em;
+  }
 `;
 
 const EndPage = () => {
-  return <EndPageWrapper></EndPageWrapper>;
+  return (
+    <EndPageWrapper>
+      <img src="" alt="Player illustration" />
+      <p>Text</p>
+    </EndPageWrapper>
+  );
 };
 
 export default EndPage;
