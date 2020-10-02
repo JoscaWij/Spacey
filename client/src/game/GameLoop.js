@@ -1,5 +1,6 @@
 import drawPlanetside from "./drawPlanetside";
 import drawPlattforms from "./drawPlattforms";
+import drawRocket from "./drawRocket";
 import drawPlayer from "./drawPlayer";
 import letPlayerStandOnPlatform from "./letPlayerStandOnPlatform";
 import { PLATFOMRHEIGHT, platforms } from "./platforms";
@@ -47,6 +48,7 @@ export const gameLoop = (canvas) => {
   clearCanvas(canvas, context);
   drawPlanetside(canvas, context, floor);
   drawPlattforms(context, PLATFOMRHEIGHT, platforms);
+  drawRocket(context);
 
   drawPlayer(player, context);
   if (!lastDrawingAt) {
