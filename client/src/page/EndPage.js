@@ -5,6 +5,7 @@ import { PageWrapper } from "../components/PageWrapper";
 
 const EndPageWrapper = styled(PageWrapper)`
   justify-content: center;
+  text-align: center;
 
   img {
     margin: 2em;
@@ -14,6 +15,7 @@ const EndPageWrapper = styled(PageWrapper)`
   span {
     font-size: 2em;
     font-family: "PermanentMarker";
+    max-width: 80%;
   }
   button {
     font-size: 1.3em;
