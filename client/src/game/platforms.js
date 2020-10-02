@@ -162,6 +162,11 @@ export const platforms = [
     top: 350,
   },
   {
+    width: 40,
+    left: 180,
+    top: 330,
+  },
+  {
     width: 100,
     left: 180,
     top: 210,
