@@ -1,11 +1,24 @@
+import platformImageSrc from "./../assets/asteroid.png";
+
+const platformImage = new Image();
+platformImage.src = platformImageSrc;
+
 export default function drawPlattforms(context, PLATTFOMRHEIGHT, plattforms) {
-  context.fillStyle = "#00cc66";
+  context.beginPath();
   plattforms.map((plattform) =>
-    context.fillRect(
+    context.drawImage(
+      platformImage,
+      0,
+      0,
+      825,
+      346,
       plattform.left,
       plattform.top,
       plattform.width,
       PLATTFOMRHEIGHT
     )
   );
+  context.fillStyle = "#00cc66";
+  context.fill();
+  context.closePath();
 }

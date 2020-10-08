@@ -1,8 +1,9 @@
-import draw from "./draw";
+import drawPlanetside from "./drawPlanetside";
 import drawPlattforms from "./drawPlattforms";
+import drawRocket from "./drawRocket";
 import drawPlayer from "./drawPlayer";
 import letPlayerStandOnPlatform from "./letPlayerStandOnPlatform";
-import { PLATTFOMRHEIGHT, plattforms } from "./plattforms";
+import { PLATFOMRHEIGHT, platforms } from "./platforms";
 
 function clearCanvas(canvas, context) {
   context.clearRect(0, 0, canvas.width, canvas.height);
@@ -29,24 +30,25 @@ export const player = {
   width: 30,
   height: 50,
   left: 10,
-  top: 200,
+  top: 1850,
   oldTop: 200,
-  speedX: 100,
-  speedY: 500,
+  speedX: 150,
+  speedY: 400,
   isJumping: false,
   isAbleToJump: false,
   direction: DIRECTIONS.FRONT,
 };
 
-const floor = 500;
+const floor = 1980;
 
 let lastDrawingAt = null;
 
 export const gameLoop = (canvas) => {
   const context = canvas.getContext("2d");
   clearCanvas(canvas, context);
-  draw(context);
-  drawPlattforms(context, PLATTFOMRHEIGHT, plattforms);
+  drawPlanetside(canvas, context, floor);
+  drawPlattforms(context, PLATFOMRHEIGHT, platforms);
+  drawRocket(context);
 
   drawPlayer(player, context);
   if (!lastDrawingAt) {
@@ -77,7 +79,7 @@ export const gameLoop = (canvas) => {
     }
   }
 
-  const isPlayerOnPlatform = letPlayerStandOnPlatform(player, plattforms);
+  const isPlayerOnPlatform = letPlayerStandOnPlatform(player, platforms);
 
   if (!isPlayerOnFloor && !isPlayerOnPlatform) {
     player.isAbleToJump = false;
