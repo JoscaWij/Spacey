@@ -1,5 +1,6 @@
 import React from "react";
 import gobackButtonImageSrc from "../assets/backbtnIcon.svg";
+import { Link } from "react-router-dom";
 import styled from "@emotion/styled";
 
 const InvisableButtonWrapper = styled.button`
@@ -18,7 +19,9 @@ const InvisableButtonWrapper = styled.button`
 function BackToMenuButton() {
   return (
     <InvisableButtonWrapper>
-      <img src={gobackButtonImageSrc} alt="Go back to Menu" />
+      <Link to="/home">
+        <img src={gobackButtonImageSrc} alt="Go back to Menu" />
+      </Link>
     </InvisableButtonWrapper>
   );
 }
