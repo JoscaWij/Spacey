@@ -4,7 +4,7 @@ import styled from "@emotion/styled";
 import { PageWrapper } from "../components/PageWrapper";
 import EndPage from "./EndPage";
 import lostInSpaceImageSrc from "../assets/playerJumping.png";
-import finishedGameImageSrc from "../assets/asteronautRekate.png";
+import finishedGameImageSrc from "../assets/asteronautRakete.png";
 
 const GameWrapper = styled(PageWrapper)`
   justify-content: center;
