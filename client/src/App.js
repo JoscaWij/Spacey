@@ -7,9 +7,9 @@ import {
 } from "react-router-dom";
 import GlobalStyles from "./GlobalStyles";
 import MenuPage from "./page/MenuPage";
-import GameViewport from "./game/GameViewport";
 import IntroPage from "./page/IntroPage";
 import EndPage from "./page/EndPage";
+import GamePage from "./page/GamePage";
 
 function App() {
   return (
@@ -27,7 +27,7 @@ function App() {
             <EndPage />
           </Route>
           <Route path="/game">
-            <GameViewport />
+            <GamePage />
           </Route>
           <Route exact path="/">
             <Redirect to="/home" />
