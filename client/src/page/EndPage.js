@@ -25,12 +25,17 @@ const EndPageWrapper = styled(PageWrapper)`
   }
 `;
 
-const EndPage = ({ imageSrc, text }) => {
+const handleClick = (gameFinished, playerLost) => {
+  gameFinished(false);
+  playerLost(false);
+};
+
+const EndPage = ({ imageSrc, text, gameFinished, playerLost }) => {
   return (
     <EndPageWrapper>
       <img src={imageSrc} alt="Player illustration" />
       <span>{text}</span>
-      <button>
+      <button onClick={() => handleClick(gameFinished, playerLost)}>
         <Link to="/game">Try again</Link>
       </button>
     </EndPageWrapper>
@@ -42,4 +47,6 @@ export default EndPage;
 EndPage.propTypes = {
   imageSrc: PropTypes.string,
   text: PropTypes.string,
+  gameFinished: PropTypes.func,
+  playerLost: PropTypes.func,
 };
