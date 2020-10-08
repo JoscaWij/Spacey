@@ -9,6 +9,7 @@ const InvisableButtonWrapper = styled.button`
   position: fixed;
   top: 1.3em;
   left: 1.3em;
+  z-index: 2;
 
   :hover {
     background: none;
