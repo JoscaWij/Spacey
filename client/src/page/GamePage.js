@@ -5,6 +5,7 @@ import EndPage from "./EndPage";
 import Gameviewport from "./../game/GameViewport";
 import lostInSpaceImageSrc from "../assets/playerJumping.png";
 import finishedGameImageSrc from "../assets/asteronautRakete.png";
+import BackToMenuButton from "../components/BackToMenuButton";
 
 const GameWrapper = styled(PageWrapper)`
   justify-content: center;
@@ -17,6 +18,7 @@ function GamePage() {
     <>
       {!isGameFinished && !isPlayerLost && (
         <GameWrapper>
+          <BackToMenuButton />
           <Gameviewport
             gameFinished={(state) => setIsGameFinished(state)}
             playerLost={(state) => setIsPlayerLost(state)}
