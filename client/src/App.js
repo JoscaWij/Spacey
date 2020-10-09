@@ -9,6 +9,7 @@ import GlobalStyles from "./GlobalStyles";
 import MenuPage from "./page/MenuPage";
 import GamePage from "./page/GamePage";
 import IntroPage from "./page/IntroPage";
+import EndPage from "./page/EndPage";
 
 function App() {
   return (
@@ -21,6 +22,9 @@ function App() {
           </Route>
           <Route path="/game/intro">
             <IntroPage />
+          </Route>
+          <Route path="/game/end">
+            <EndPage />
           </Route>
           <Route path="/game">
             <GamePage />
