@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import PropTypes from "prop-types";
 import {
   gameLoop,
   player,
@@ -53,14 +54,14 @@ function handleKeyUp(event) {
   }
 }
 
-const Game = (props) => {
+const Game = ({ isGameFinished, isPlayerLost, gameFinished, playerLost }) => {
   const canvasRef = useRef(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     resizeCanvas(canvas);
 
-    gameLoop(canvas);
+    gameLoop(canvas, gameFinished, playerLost);
 
     window.addEventListener("keydown", handleKeyDown);
     window.addEventListener("keyup", handleKeyUp);
@@ -69,9 +70,16 @@ const Game = (props) => {
       window.removeEventListener("keydown", handleKeyDown);
       window.removeEventListener("keyup", handleKeyUp);
     };
-  }, []);
+  }, [isGameFinished, isPlayerLost, gameFinished, playerLost]);
 
-  return <canvas ref={canvasRef} {...props} />;
+  return <canvas ref={canvasRef} />;
 };
 
 export default Game;
+
+Game.propTypes = {
+  isGameFinished: PropTypes.bool,
+  isPlayerLost: PropTypes.bool,
+  gameFinished: PropTypes.func,
+  playerLost: PropTypes.func,
+};

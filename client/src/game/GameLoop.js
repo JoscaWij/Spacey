@@ -43,7 +43,8 @@ const floor = 1980;
 
 let lastDrawingAt = null;
 
-export const gameLoop = (canvas) => {
+export const gameLoop = (canvas, gameFinished, playerLost) => {
+  console.log(playerLost, gameFinished);
   const context = canvas.getContext("2d");
   clearCanvas(canvas, context);
   drawPlanetside(canvas, context, floor);
@@ -87,5 +88,5 @@ export const gameLoop = (canvas) => {
 
   lastDrawingAt = Date.now();
 
-  requestAnimationFrame(() => gameLoop(canvas));
+  requestAnimationFrame(() => gameLoop(canvas, gameFinished, playerLost));
 };

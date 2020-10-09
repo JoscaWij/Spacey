@@ -1,6 +1,7 @@
 import React from "react";
 import Game, { CANVAS_SIZE } from "./Game";
 import styled from "@emotion/styled";
+import PropTypes from "prop-types";
 
 const VIEWPORT_SIZE = {
   width: 375,
@@ -30,12 +31,29 @@ const CameraContainer = styled.div`
   }
 `;
 
-const GameViewport = () => {
+const GameViewport = ({
+  isGameFinished,
+  isPlayerLost,
+  gameFinished,
+  playerLost,
+}) => {
   return (
     <CameraContainer>
-      <Game />
+      <Game
+        isGameFinished={isGameFinished}
+        isPlayerLost={isPlayerLost}
+        gameFinished={(state) => gameFinished(state)}
+        playerLost={(state) => playerLost(state)}
+      />
     </CameraContainer>
   );
 };
 
 export default GameViewport;
+
+GameViewport.propTypes = {
+  isGameFinished: PropTypes.bool,
+  isPlayerLost: PropTypes.bool,
+  gameFinished: PropTypes.func,
+  playerLost: PropTypes.func,
+};
