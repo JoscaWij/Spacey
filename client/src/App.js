@@ -7,9 +7,9 @@ import {
 } from "react-router-dom";
 import GlobalStyles from "./GlobalStyles";
 import MenuPage from "./page/MenuPage";
+import GamePage from "./page/GamePage";
 import IntroPage from "./page/IntroPage";
 import EndPage from "./page/EndPage";
-import GamePage from "./page/GamePage";
 
 function App() {
   return (
