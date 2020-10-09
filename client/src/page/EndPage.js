@@ -2,7 +2,6 @@ import React from "react";
 import styled from "@emotion/styled";
 import PropTypes from "prop-types";
 import { PageWrapper } from "../components/PageWrapper";
-import { Link } from "react-router-dom";
 
 const EndPageWrapper = styled(PageWrapper)`
   justify-content: center;
@@ -36,7 +35,7 @@ const EndPage = ({ imageSrc, text, gameFinished, playerLost }) => {
       <img src={imageSrc} alt="Player illustration" />
       <span>{text}</span>
       <button onClick={() => handleClick(gameFinished, playerLost)}>
-        <Link to="/game">Try again</Link>
+        Try again
       </button>
     </EndPageWrapper>
   );
