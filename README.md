@@ -24,10 +24,6 @@ Unfortunatly the game can only be played on PC in Version 1.0
 
 All graphics are designed by myself. The background photo is from [Matt Gross at unsplash.com](https://unsplash.com/photos/uPa8mFbySYw).
 
-## Requirements
-
-Node.js and npm
-
 ## Install all dependencies
 
 `npm install`
