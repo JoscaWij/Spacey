@@ -32,11 +32,9 @@ const CameraContainer = styled.div`
 
 const GameViewport = () => {
   return (
-    <>
-      <CameraContainer>
-        <Game />
-      </CameraContainer>
-    </>
+    <CameraContainer>
+      <Game />
+    </CameraContainer>
   );
 };
 
