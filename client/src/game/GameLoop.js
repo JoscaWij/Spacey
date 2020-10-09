@@ -4,6 +4,7 @@ import drawRocket from "./drawRocket";
 import drawPlayer from "./drawPlayer";
 import letPlayerStandOnPlatform from "./letPlayerStandOnPlatform";
 import { PLATFOMRHEIGHT, platforms } from "./platforms";
+import checkIfPlayerIsByRocket from "./checkIfPlayerIsByRocket";
 
 function clearCanvas(canvas, context) {
   context.clearRect(0, 0, canvas.width, canvas.height);
@@ -44,13 +45,11 @@ const floor = 1980;
 let lastDrawingAt = null;
 
 export const gameLoop = (canvas, gameFinished, playerLost) => {
-  console.log(playerLost, gameFinished);
   const context = canvas.getContext("2d");
   clearCanvas(canvas, context);
   drawPlanetside(canvas, context, floor);
   drawPlattforms(context, PLATFOMRHEIGHT, platforms);
   drawRocket(context);
-
   drawPlayer(player, context);
   if (!lastDrawingAt) {
     lastDrawingAt = Date.now();
@@ -85,6 +84,9 @@ export const gameLoop = (canvas, gameFinished, playerLost) => {
   if (!isPlayerOnFloor && !isPlayerOnPlatform) {
     player.isAbleToJump = false;
   }
+
+  const isPlayerByRocket = checkIfPlayerIsByRocket(player);
+  console.log(isPlayerByRocket);
 
   lastDrawingAt = Date.now();
 
