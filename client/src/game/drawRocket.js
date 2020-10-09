@@ -5,7 +5,7 @@ rocketImage.src = rocketImageSrc;
 
 export const rocket = {
   left: 230,
-  top: 110,
+  top: 113,
   width: 50,
   height: 100,
 };
