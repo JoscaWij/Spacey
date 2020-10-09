@@ -2,6 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import PropTypes from "prop-types";
 import { PageWrapper } from "../components/PageWrapper";
+import BackToMenuButton from "../components/BackToMenuButton";
 
 const EndPageWrapper = styled(PageWrapper)`
   justify-content: center;
@@ -31,13 +32,16 @@ const handleClick = (gameFinished, playerLost) => {
 
 const EndPage = ({ imageSrc, text, gameFinished, playerLost }) => {
   return (
-    <EndPageWrapper>
-      <img src={imageSrc} alt="Player illustration" />
-      <span>{text}</span>
-      <button onClick={() => handleClick(gameFinished, playerLost)}>
-        Try again
-      </button>
-    </EndPageWrapper>
+    <>
+      <BackToMenuButton />
+      <EndPageWrapper>
+        <img src={imageSrc} alt="Player illustration" />
+        <span>{text}</span>
+        <button onClick={() => handleClick(gameFinished, playerLost)}>
+          Try again
+        </button>
+      </EndPageWrapper>
+    </>
   );
 };
 
