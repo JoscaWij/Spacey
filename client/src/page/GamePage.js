@@ -11,8 +11,8 @@ const GameWrapper = styled(PageWrapper)`
 `;
 
 function GamePage() {
-  const [isGameFinished, setIsGameFinished] = React.useState(true);
   const [isPlayerLost, setIsPlayerLost] = React.useState(false);
+  const [isGameFinished, setIsGameFinished] = React.useState(false);
   return (
     <>
       {!isGameFinished && !isPlayerLost && (
@@ -23,17 +23,19 @@ function GamePage() {
           />
         </GameWrapper>
       )}
-      {isGameFinished && (
+      {isGameFinished && !isPlayerLost && (
         <EndPage
           imageSrc={finishedGameImageSrc}
           text="YAY! The player is safe"
           gameFinished={(state) => setIsGameFinished(state)}
+          playerLost={(state) => setIsPlayerLost(state)}
         />
       )}
-      {isPlayerLost && (
+      {isPlayerLost && !isGameFinished && (
         <EndPage
           imageSrc={lostInSpaceImageSrc}
           text="Oh no! The astronaut is lost in space!"
+          gameFinished={(state) => setIsGameFinished(state)}
           playerLost={(state) => setIsPlayerLost(state)}
         />
       )}
