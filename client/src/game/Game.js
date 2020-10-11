@@ -18,7 +18,7 @@ export const CANVAS_SIZE = {
 const camera = {
   speed: 44.43,
   /* speed: (- VIEWPORT_SIZE.height + CANVAS_SIZE.height)/animation.duration, */
-  bottom: -CANVAS_SIZE.height,
+  bottom: CANVAS_SIZE.height,
   offsetY: 0,
   scrolling: false,
 };

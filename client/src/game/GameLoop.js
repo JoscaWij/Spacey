@@ -58,7 +58,7 @@ export const gameLoop = (canvas, finishGame, playerLoses, camera) => {
 
   if (camera.scrolling) {
     const cameraMovement = camera.speed * (timeSinceLastDrawing / 1000);
-    camera.bottom += cameraMovement;
+    camera.bottom -= cameraMovement;
   }
 
   let offsetX = 0;
