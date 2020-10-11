@@ -59,8 +59,6 @@ export const gameLoop = (canvas, finishGame, playerLoses, camera) => {
   const cameraMovement = camera.speed * (timeSinceLastDrawing / 1000);
   camera.bottom += cameraMovement;
 
-  console.log(camera.bottom);
-
   let offsetX = 0;
   if (activeKeys[DIRECTION_KEYS.RIGHT]) {
     offsetX = (player.speedX * timeSinceLastDrawing) / 1000;
@@ -95,6 +93,8 @@ export const gameLoop = (canvas, finishGame, playerLoses, camera) => {
   if (isPlayerByRocket) {
     finishGame(true);
   }
+
+  console.log(camera.scrolling);
 
   lastDrawingAt = Date.now();
 

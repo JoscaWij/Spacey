@@ -8,7 +8,7 @@ import {
   DIRECTIONS,
 } from "./GameLoop";
 import rotatePlayer from "./rotatePlayer";
-/* import { animation, VIEWPORT_SIZE } from "./GameViewport"; */
+import { animation } from "./GameViewport";
 
 export const CANVAS_SIZE = {
   width: 375,
@@ -20,6 +20,7 @@ const camera = {
   /* speed: (- VIEWPORT_SIZE.height + CANVAS_SIZE.height)/animation.duration, */
   bottom: -CANVAS_SIZE.height,
   offsetY: 0,
+  scrolling: false,
 };
 
 function resizeCanvas(canvas) {
@@ -68,6 +69,12 @@ const Game = ({ isGameFinished, isPlayerLost, finishGame, playerLoses }) => {
   useEffect(() => {
     const canvas = canvasRef.current;
     resizeCanvas(canvas);
+
+    const timeout =
+      animation.duration * (animation.scrollStartPercentage / 100) * 1000;
+    setTimeout(() => {
+      camera.scrolling = true;
+    }, timeout);
 
     gameLoop(canvas, finishGame, playerLoses, camera);
 
