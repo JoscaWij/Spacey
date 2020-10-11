@@ -44,7 +44,7 @@ const floor = 1980;
 
 let lastDrawingAt = null;
 
-export const gameLoop = (canvas, finishGame, playerLoses) => {
+export const gameLoop = (canvas, finishGame, playerLoses, camera) => {
   const context = canvas.getContext("2d");
   clearCanvas(canvas, context);
   drawPlanetside(canvas, context, floor);
@@ -55,6 +55,12 @@ export const gameLoop = (canvas, finishGame, playerLoses) => {
     lastDrawingAt = Date.now();
   }
   const timeSinceLastDrawing = Date.now() - lastDrawingAt;
+
+  const cameraMovement = camera.speed * (timeSinceLastDrawing / 1000);
+  camera.bottom += cameraMovement;
+
+  console.log(camera.bottom);
+
   let offsetX = 0;
   if (activeKeys[DIRECTION_KEYS.RIGHT]) {
     offsetX = (player.speedX * timeSinceLastDrawing) / 1000;
@@ -92,5 +98,7 @@ export const gameLoop = (canvas, finishGame, playerLoses) => {
 
   lastDrawingAt = Date.now();
 
-  requestAnimationFrame(() => gameLoop(canvas, finishGame, playerLoses));
+  requestAnimationFrame(() =>
+    gameLoop(canvas, finishGame, playerLoses, camera)
+  );
 };

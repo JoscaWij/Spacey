@@ -8,10 +8,18 @@ import {
   DIRECTIONS,
 } from "./GameLoop";
 import rotatePlayer from "./rotatePlayer";
+/* import { animation, VIEWPORT_SIZE } from "./GameViewport"; */
 
 export const CANVAS_SIZE = {
   width: 375,
   height: 2000,
+};
+
+const camera = {
+  speed: 44.43,
+  /* speed: (- VIEWPORT_SIZE.height + CANVAS_SIZE.height)/animation.duration, */
+  bottom: -CANVAS_SIZE.height,
+  offsetY: 0,
 };
 
 function resizeCanvas(canvas) {
@@ -61,7 +69,7 @@ const Game = ({ isGameFinished, isPlayerLost, finishGame, playerLoses }) => {
     const canvas = canvasRef.current;
     resizeCanvas(canvas);
 
-    gameLoop(canvas, finishGame, playerLoses);
+    gameLoop(canvas, finishGame, playerLoses, camera);
 
     window.addEventListener("keydown", handleKeyDown);
     window.addEventListener("keyup", handleKeyUp);
