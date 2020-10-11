@@ -20,8 +20,8 @@ function GamePage() {
         <GameWrapper>
           <BackToMenuButton />
           <Gameviewport
-            isGameFinished={isGameFinished}
-            isPlayerLost={isPlayerLost}
+            isFinished={isGameFinished}
+            isLost={isPlayerLost}
             gameFinished={(state) => setIsGameFinished(state)}
             playerLost={(state) => setIsPlayerLost(state)}
           />

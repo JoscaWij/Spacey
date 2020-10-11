@@ -31,19 +31,14 @@ const CameraContainer = styled.div`
   }
 `;
 
-const GameViewport = ({
-  isGameFinished,
-  isPlayerLost,
-  gameFinished,
-  playerLost,
-}) => {
+const GameViewport = ({ isFinished, isLost, gameFinished, playerLost }) => {
   return (
     <CameraContainer>
       <Game
-        isGameFinished={isGameFinished}
-        isPlayerLost={isPlayerLost}
-        gameFinished={(state) => gameFinished(state)}
-        playerLost={(state) => playerLost(state)}
+        isGameFinished={isFinished}
+        isPlayerLost={isLost}
+        finishGame={(state) => gameFinished(state)}
+        playerLoses={(state) => playerLost(state)}
       />
     </CameraContainer>
   );
@@ -52,8 +47,8 @@ const GameViewport = ({
 export default GameViewport;
 
 GameViewport.propTypes = {
-  isGameFinished: PropTypes.bool,
-  isPlayerLost: PropTypes.bool,
+  isFinished: PropTypes.bool,
+  isLost: PropTypes.bool,
   gameFinished: PropTypes.func,
   playerLost: PropTypes.func,
 };

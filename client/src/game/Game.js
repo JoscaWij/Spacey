@@ -54,14 +54,14 @@ function handleKeyUp(event) {
   }
 }
 
-const Game = ({ isGameFinished, isPlayerLost, gameFinished, playerLost }) => {
+const Game = ({ isGameFinished, isPlayerLost, finishGame, playerLoses }) => {
   const canvasRef = useRef(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     resizeCanvas(canvas);
 
-    gameLoop(canvas, gameFinished, playerLost);
+    gameLoop(canvas, finishGame, playerLoses);
 
     window.addEventListener("keydown", handleKeyDown);
     window.addEventListener("keyup", handleKeyUp);
@@ -70,7 +70,7 @@ const Game = ({ isGameFinished, isPlayerLost, gameFinished, playerLost }) => {
       window.removeEventListener("keydown", handleKeyDown);
       window.removeEventListener("keyup", handleKeyUp);
     };
-  }, [isGameFinished, isPlayerLost, gameFinished, playerLost]);
+  }, [isGameFinished, isPlayerLost, finishGame, playerLoses]);
 
   return <canvas ref={canvasRef} />;
 };
@@ -80,6 +80,6 @@ export default Game;
 Game.propTypes = {
   isGameFinished: PropTypes.bool,
   isPlayerLost: PropTypes.bool,
-  gameFinished: PropTypes.func,
-  playerLost: PropTypes.func,
+  finishGame: PropTypes.func,
+  playerLoses: PropTypes.func,
 };

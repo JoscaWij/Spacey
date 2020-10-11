@@ -44,7 +44,7 @@ const floor = 1980;
 
 let lastDrawingAt = null;
 
-export const gameLoop = (canvas, gameFinished, playerLost) => {
+export const gameLoop = (canvas, finishGame, playerLoses) => {
   const context = canvas.getContext("2d");
   clearCanvas(canvas, context);
   drawPlanetside(canvas, context, floor);
@@ -86,9 +86,11 @@ export const gameLoop = (canvas, gameFinished, playerLost) => {
   }
 
   const isPlayerByRocket = checkIfPlayerIsByRocket(player);
-  console.log(isPlayerByRocket);
+  if (isPlayerByRocket) {
+    finishGame(true);
+  }
 
   lastDrawingAt = Date.now();
 
-  requestAnimationFrame(() => gameLoop(canvas, gameFinished, playerLost));
+  requestAnimationFrame(() => gameLoop(canvas, finishGame, playerLoses));
 };
