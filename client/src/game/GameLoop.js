@@ -96,6 +96,11 @@ export const gameLoop = (canvas, finishGame, playerLoses, camera) => {
     finishGame(true);
   }
 
+  const isPlayerBelowCameraBottom = player.top > camera.bottom;
+  if (isPlayerBelowCameraBottom) {
+    playerLoses(true);
+  }
+
   lastDrawingAt = Date.now();
 
   requestAnimationFrame(() =>
