@@ -26,12 +26,13 @@ const EndPageWrapper = styled(PageWrapper)`
   }
 `;
 
-const handleClick = (gameFinished, playerLost) => {
+const handleClick = (gameFinished, playerLost, restartGame) => {
   gameFinished(false);
   playerLost(false);
+  restartGame(true);
 };
 
-const EndPage = ({ imageSrc, text, gameFinished, playerLost }) => {
+const EndPage = ({ imageSrc, text, gameFinished, playerLost, restartGame }) => {
   return (
     <>
       <BackToMenuButton />
@@ -53,4 +54,5 @@ EndPage.propTypes = {
   text: PropTypes.string,
   gameFinished: PropTypes.func,
   playerLost: PropTypes.func,
+  restartGame: PropTypes.func,
 };
