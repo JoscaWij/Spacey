@@ -41,8 +41,7 @@ const EndPage = ({ imageSrc, text, gameFinished, playerLost, restartGame }) => {
         <button
           onClick={() => handleClick(gameFinished, playerLost, restartGame)}
         >
-          {" "}
-          Back to Menu
+          Try Again
         </button>
       </EndPageWrapper>
     </>
