@@ -6,6 +6,7 @@ import letPlayerStandOnPlatform from "./letPlayerStandOnPlatform";
 import { PLATFOMRHEIGHT, platforms } from "./platforms";
 import checkIfPlayerIsByRocket from "./checkIfPlayerIsByRocket";
 import { VIEWPORT_SIZE } from "./GameViewport";
+import { CANVAS_SIZE } from "./Game";
 
 function clearCanvas(canvas, context) {
   context.clearRect(0, 0, canvas.width, canvas.height);
@@ -45,7 +46,28 @@ const floor = 1980;
 
 let lastDrawingAt = null;
 
-export const gameLoop = (canvas, finishGame, playerLoses, camera) => {
+export const gameLoop = (
+  canvas,
+  finishGame,
+  playerLoses,
+  camera,
+  resetGame,
+  restartGame,
+  timeout
+) => {
+  if (resetGame) {
+    player.top = 1850;
+    player.left = 10;
+    activeKeys = {};
+    camera.bottom = CANVAS_SIZE.height;
+    camera.scrolling = false;
+    restartGame(false);
+
+    setTimeout(() => {
+      camera.scrolling = true;
+    }, timeout);
+  }
+
   const context = canvas.getContext("2d");
   clearCanvas(canvas, context);
   drawPlanetside(canvas, context, floor);
@@ -105,6 +127,6 @@ export const gameLoop = (canvas, finishGame, playerLoses, camera) => {
   lastDrawingAt = Date.now();
 
   requestAnimationFrame(() =>
-    gameLoop(canvas, finishGame, playerLoses, camera)
+    gameLoop(canvas, finishGame, playerLoses, camera, resetGame)
   );
 };
