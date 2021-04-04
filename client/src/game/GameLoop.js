@@ -4,6 +4,9 @@ import drawRocket from "./drawRocket";
 import drawPlayer from "./drawPlayer";
 import letPlayerStandOnPlatform from "./letPlayerStandOnPlatform";
 import { PLATFOMRHEIGHT, platforms } from "./platforms";
+import checkIfPlayerIsByRocket from "./checkIfPlayerIsByRocket";
+import { VIEWPORT_SIZE } from "./GameViewport";
+import { CANVAS_SIZE } from "./Game";
 
 function clearCanvas(canvas, context) {
   context.clearRect(0, 0, canvas.width, canvas.height);
@@ -11,7 +14,7 @@ function clearCanvas(canvas, context) {
 
 export const GRAVITY = 7;
 
-export const activeKeys = {};
+export let activeKeys = {};
 
 export const DIRECTION_KEYS = {
   RIGHT: "ArrowRight",
@@ -43,18 +46,44 @@ const floor = 1980;
 
 let lastDrawingAt = null;
 
-export const gameLoop = (canvas) => {
+export const gameLoop = (
+  canvas,
+  finishGame,
+  playerLoses,
+  camera,
+  resetGame,
+  restartGame,
+  timeout
+) => {
+  if (resetGame) {
+    player.top = 1850;
+    player.left = 10;
+    activeKeys = {};
+    camera.bottom = CANVAS_SIZE.height;
+    camera.scrolling = false;
+    restartGame(false);
+
+    setTimeout(() => {
+      camera.scrolling = true;
+    }, timeout);
+  }
+
   const context = canvas.getContext("2d");
   clearCanvas(canvas, context);
   drawPlanetside(canvas, context, floor);
   drawPlattforms(context, PLATFOMRHEIGHT, platforms);
   drawRocket(context);
-
   drawPlayer(player, context);
   if (!lastDrawingAt) {
     lastDrawingAt = Date.now();
   }
   const timeSinceLastDrawing = Date.now() - lastDrawingAt;
+
+  if (camera.scrolling && camera.bottom > VIEWPORT_SIZE.height) {
+    const cameraOffsetY = camera.speed * (timeSinceLastDrawing / 1000);
+    camera.bottom -= cameraOffsetY;
+  }
+
   let offsetX = 0;
   if (activeKeys[DIRECTION_KEYS.RIGHT]) {
     offsetX = (player.speedX * timeSinceLastDrawing) / 1000;
@@ -85,7 +114,19 @@ export const gameLoop = (canvas) => {
     player.isAbleToJump = false;
   }
 
+  const isPlayerByRocket = checkIfPlayerIsByRocket(player);
+  if (isPlayerByRocket) {
+    finishGame(true);
+  }
+
+  const isPlayerBelowCameraBottom = player.top > camera.bottom;
+  if (isPlayerBelowCameraBottom) {
+    playerLoses(true);
+  }
+
   lastDrawingAt = Date.now();
 
-  requestAnimationFrame(() => gameLoop(canvas));
+  requestAnimationFrame(() =>
+    gameLoop(canvas, finishGame, playerLoses, camera, resetGame)
+  );
 };

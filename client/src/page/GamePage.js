@@ -14,14 +14,19 @@ const GameWrapper = styled(PageWrapper)`
 function GamePage() {
   const [isPlayerLost, setIsPlayerLost] = React.useState(false);
   const [isGameFinished, setIsGameFinished] = React.useState(false);
+  const [resetGame, setResetGame] = React.useState(false);
   return (
     <>
       {!isGameFinished && !isPlayerLost && (
         <GameWrapper>
           <BackToMenuButton />
           <Gameviewport
+            isFinished={isGameFinished}
+            isLost={isPlayerLost}
             gameFinished={(state) => setIsGameFinished(state)}
             playerLost={(state) => setIsPlayerLost(state)}
+            restartGame={(state) => setResetGame(state)}
+            resetGame={resetGame}
           />
         </GameWrapper>
       )}
@@ -31,6 +36,7 @@ function GamePage() {
           text="YAY! The player is safe"
           gameFinished={(state) => setIsGameFinished(state)}
           playerLost={(state) => setIsPlayerLost(state)}
+          restartGame={(state) => setResetGame(state)}
         />
       )}
       {isPlayerLost && !isGameFinished && (
@@ -39,6 +45,7 @@ function GamePage() {
           text="Oh no! The astronaut is lost in space!"
           gameFinished={(state) => setIsGameFinished(state)}
           playerLost={(state) => setIsPlayerLost(state)}
+          restartGame={(state) => setResetGame(state)}
         />
       )}
     </>

@@ -25,20 +25,23 @@ const EndPageWrapper = styled(PageWrapper)`
   }
 `;
 
-const handleClick = (gameFinished, playerLost) => {
+const handleClick = (gameFinished, playerLost, restartGame) => {
   gameFinished(false);
   playerLost(false);
+  restartGame(true);
 };
 
-const EndPage = ({ imageSrc, text, gameFinished, playerLost }) => {
+const EndPage = ({ imageSrc, text, gameFinished, playerLost, restartGame }) => {
   return (
     <>
       <BackToMenuButton />
       <EndPageWrapper>
         <img src={imageSrc} alt="Player illustration" />
         <span>{text}</span>
-        <button onClick={() => handleClick(gameFinished, playerLost)}>
-          Try again
+        <button
+          onClick={() => handleClick(gameFinished, playerLost, restartGame)}
+        >
+          Try Again
         </button>
       </EndPageWrapper>
     </>
@@ -52,4 +55,5 @@ EndPage.propTypes = {
   text: PropTypes.string,
   gameFinished: PropTypes.func,
   playerLost: PropTypes.func,
+  restartGame: PropTypes.func,
 };

@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import PropTypes from "prop-types";
 import {
   gameLoop,
   player,
@@ -7,10 +8,19 @@ import {
   DIRECTIONS,
 } from "./GameLoop";
 import rotatePlayer from "./rotatePlayer";
+import { animation } from "./GameViewport";
 
 export const CANVAS_SIZE = {
   width: 375,
   height: 2000,
+};
+
+const camera = {
+  speed: 44.43,
+  /* speed: (- VIEWPORT_SIZE.height + CANVAS_SIZE.height)/animation.duration, */
+  bottom: CANVAS_SIZE.height,
+  offsetY: 0,
+  scrolling: false,
 };
 
 function resizeCanvas(canvas) {
@@ -53,14 +63,35 @@ function handleKeyUp(event) {
   }
 }
 
-const Game = (props) => {
+const Game = ({
+  isGameFinished,
+  isPlayerLost,
+  finishGame,
+  playerLoses,
+  resetGame,
+  restartGame,
+}) => {
   const canvasRef = useRef(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     resizeCanvas(canvas);
 
-    gameLoop(canvas);
+    const timeout =
+      animation.duration * (animation.scrollStartPercentage / 100) * 1000;
+    setTimeout(() => {
+      camera.scrolling = true;
+    }, timeout);
+
+    gameLoop(
+      canvas,
+      finishGame,
+      playerLoses,
+      camera,
+      resetGame,
+      restartGame,
+      timeout
+    );
 
     window.addEventListener("keydown", handleKeyDown);
     window.addEventListener("keyup", handleKeyUp);
@@ -69,9 +100,25 @@ const Game = (props) => {
       window.removeEventListener("keydown", handleKeyDown);
       window.removeEventListener("keyup", handleKeyUp);
     };
-  }, []);
+  }, [
+    isGameFinished,
+    isPlayerLost,
+    finishGame,
+    playerLoses,
+    resetGame,
+    restartGame,
+  ]);
 
-  return <canvas ref={canvasRef} {...props} />;
+  return <canvas ref={canvasRef} />;
 };
 
 export default Game;
+
+Game.propTypes = {
+  isGameFinished: PropTypes.bool,
+  isPlayerLost: PropTypes.bool,
+  finishGame: PropTypes.func,
+  playerLoses: PropTypes.func,
+  resetGame: PropTypes.bool,
+  restartGame: PropTypes.func,
+};
