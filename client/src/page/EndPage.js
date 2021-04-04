@@ -3,7 +3,6 @@ import styled from "@emotion/styled";
 import PropTypes from "prop-types";
 import { PageWrapper } from "../components/PageWrapper";
 import BackToMenuButton from "../components/BackToMenuButton";
-import { Link } from "react-router-dom";
 
 const EndPageWrapper = styled(PageWrapper)`
   justify-content: center;
@@ -39,9 +38,12 @@ const EndPage = ({ imageSrc, text, gameFinished, playerLost, restartGame }) => {
       <EndPageWrapper>
         <img src={imageSrc} alt="Player illustration" />
         <span>{text}</span>
-        <Link to="/home" onClick={() => handleClick(gameFinished, playerLost)}>
-          <button>Back to Menu</button>
-        </Link>
+        <button
+          onClick={() => handleClick(gameFinished, playerLost, restartGame)}
+        >
+          {" "}
+          Back to Menu
+        </button>
       </EndPageWrapper>
     </>
   );
