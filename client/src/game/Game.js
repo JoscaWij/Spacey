@@ -83,7 +83,15 @@ const Game = ({
       camera.scrolling = true;
     }, timeout);
 
-    gameLoop(canvas, finishGame, playerLoses, camera, resetGame, restartGame);
+    gameLoop(
+      canvas,
+      finishGame,
+      playerLoses,
+      camera,
+      resetGame,
+      restartGame,
+      timeout
+    );
 
     window.addEventListener("keydown", handleKeyDown);
     window.addEventListener("keyup", handleKeyUp);
