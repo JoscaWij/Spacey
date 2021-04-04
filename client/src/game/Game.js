@@ -63,7 +63,14 @@ function handleKeyUp(event) {
   }
 }
 
-const Game = ({ isGameFinished, isPlayerLost, finishGame, playerLoses }) => {
+const Game = ({
+  isGameFinished,
+  isPlayerLost,
+  finishGame,
+  playerLoses,
+  resetGame,
+  restartGame,
+}) => {
   const canvasRef = useRef(null);
 
   useEffect(() => {
@@ -76,7 +83,7 @@ const Game = ({ isGameFinished, isPlayerLost, finishGame, playerLoses }) => {
       camera.scrolling = true;
     }, timeout);
 
-    gameLoop(canvas, finishGame, playerLoses, camera);
+    gameLoop(canvas, finishGame, playerLoses, camera, resetGame, restartGame);
 
     window.addEventListener("keydown", handleKeyDown);
     window.addEventListener("keyup", handleKeyUp);
@@ -85,7 +92,14 @@ const Game = ({ isGameFinished, isPlayerLost, finishGame, playerLoses }) => {
       window.removeEventListener("keydown", handleKeyDown);
       window.removeEventListener("keyup", handleKeyUp);
     };
-  }, [isGameFinished, isPlayerLost, finishGame, playerLoses]);
+  }, [
+    isGameFinished,
+    isPlayerLost,
+    finishGame,
+    playerLoses,
+    resetGame,
+    restartGame,
+  ]);
 
   return <canvas ref={canvasRef} />;
 };
@@ -97,4 +111,6 @@ Game.propTypes = {
   isPlayerLost: PropTypes.bool,
   finishGame: PropTypes.func,
   playerLoses: PropTypes.func,
+  resetGame: PropTypes.bool,
+  restartGame: PropTypes.func,
 };
