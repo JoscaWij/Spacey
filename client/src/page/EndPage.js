@@ -38,10 +38,11 @@ const EndPage = ({ imageSrc, text, gameFinished, playerLost }) => {
       <EndPageWrapper>
         <img src={imageSrc} alt="Player illustration" />
         <span>{text}</span>
-        <button onClick={() => handleClick(gameFinished, playerLost)}>
-          <Link to="/home" />
-          Back to Menu
-        </button>
+        <Link to="/home">
+          <button onClick={() => handleClick(gameFinished, playerLost)}>
+            Back to Menu
+          </button>
+        </Link>
       </EndPageWrapper>
     </>
   );
