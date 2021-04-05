@@ -67,6 +67,10 @@ const IntroTextbox = styled.div`
     text-align: center;
     flex-basis: 100%;
   }
+
+  img {
+    height: 2em;
+  }
 `;
 
 const ImageCenteredContainer = styled.div`
