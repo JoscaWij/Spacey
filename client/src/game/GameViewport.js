@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 
 export const VIEWPORT_SIZE = {
   width: 375,
-  height: 667,
+  height: window.innerHeight,
 };
 
 export const animation = {
