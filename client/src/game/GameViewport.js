@@ -14,6 +14,8 @@ export const animation = {
 };
 
 const scaleValue = window.innerWidth / CANVAS_SIZE.width;
+const scaledWidth = CANVAS_SIZE.width * scaleValue;
+const translateXValue = (scaledWidth - CANVAS_SIZE.width) / 2;
 
 const CameraContainer = styled.div`
   width: ${`${VIEWPORT_SIZE.width}px`};
@@ -24,6 +26,7 @@ const CameraContainer = styled.div`
   canvas {
     position: fixed;
     animation: scrollingcamera linear ${`${animation.duration}s`};
+    transform: scale(${scaleValue}) translateX(${`${translateXValue}px`});
   }
   @keyframes scrollingcamera {
     0% {
