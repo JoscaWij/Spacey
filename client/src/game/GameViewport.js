@@ -4,7 +4,7 @@ import styled from "@emotion/styled";
 import PropTypes from "prop-types";
 
 export const VIEWPORT_SIZE = {
-  width: CANVAS_SIZE.width,
+  width: window.innerWidth,
   height: window.innerHeight,
 };
 
