@@ -20,7 +20,7 @@ const CameraContainer = styled.div`
   overflow-y: hidden;
 
   canvas {
-    position: relative;
+    position: fixed;
     animation: scrollingcamera linear ${`${animation.duration}s`};
   }
   @keyframes scrollingcamera {
