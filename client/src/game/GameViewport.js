@@ -13,6 +13,8 @@ export const animation = {
   scrollStartPercentage: 5,
 };
 
+const scaleValue = window.innerWidth / CANVAS_SIZE.width;
+
 const CameraContainer = styled.div`
   width: ${`${VIEWPORT_SIZE.width}px`};
   height: ${`${VIEWPORT_SIZE.height}px`};
@@ -25,10 +27,18 @@ const CameraContainer = styled.div`
   }
   @keyframes scrollingcamera {
     0% {
-      top: ${`${-(CANVAS_SIZE.height - VIEWPORT_SIZE.height)}px`};
+      top: ${`${-(
+        CANVAS_SIZE.height +
+        (CANVAS_SIZE.height * scaleValue - CANVAS_SIZE.height) / 2 -
+        VIEWPORT_SIZE.height
+      )}px`};
     }
     ${`${animation.scrollStartPercentage}%`} {
-      top: ${`${-(CANVAS_SIZE.height - VIEWPORT_SIZE.height)}px`};
+      top: ${`${-(
+        CANVAS_SIZE.height +
+        (CANVAS_SIZE.height * scaleValue - CANVAS_SIZE.height) / 2 -
+        VIEWPORT_SIZE.height
+      )}px`};
     }
     to {
       top: 0px;
