@@ -13,9 +13,18 @@ export const animation = {
   scrollStartPercentage: 5,
 };
 
-const scaleValue = window.innerWidth / CANVAS_SIZE.width;
+let scaleValue;
+let translateXValue;
+
+scaleValue = window.innerWidth / CANVAS_SIZE.width;
 const scaledWidth = CANVAS_SIZE.width * scaleValue;
-const translateXValue = (scaledWidth - CANVAS_SIZE.width) / 2;
+
+if (window.innerHeight > scaledWidth) {
+  translateXValue = (scaledWidth - CANVAS_SIZE.width) / 2;
+} else {
+  scaleValue = 1;
+  translateXValue = 0;
+}
 
 const CameraContainer = styled.div`
   width: ${`${VIEWPORT_SIZE.width}px`};
