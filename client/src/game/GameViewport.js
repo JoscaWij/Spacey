@@ -4,14 +4,27 @@ import styled from "@emotion/styled";
 import PropTypes from "prop-types";
 
 export const VIEWPORT_SIZE = {
-  width: 375,
-  height: 667,
+  width: window.innerWidth,
+  height: window.innerHeight,
 };
 
 export const animation = {
   duration: 30,
   scrollStartPercentage: 5,
 };
+
+let scaleValue;
+let translateXValue;
+
+scaleValue = window.innerWidth / CANVAS_SIZE.width;
+const scaledWidth = CANVAS_SIZE.width * scaleValue;
+
+if (window.innerHeight > scaledWidth) {
+  translateXValue = (scaledWidth - CANVAS_SIZE.width) / 2;
+} else {
+  scaleValue = 1;
+  translateXValue = (window.innerWidth - CANVAS_SIZE.width) / 2;
+}
 
 const CameraContainer = styled.div`
   width: ${`${VIEWPORT_SIZE.width}px`};
@@ -20,15 +33,24 @@ const CameraContainer = styled.div`
   overflow-y: hidden;
 
   canvas {
-    position: relative;
+    position: fixed;
     animation: scrollingcamera linear ${`${animation.duration}s`};
+    transform: translateX(${`${translateXValue}px`}) scale(${scaleValue});
   }
   @keyframes scrollingcamera {
     0% {
-      top: ${`${-(CANVAS_SIZE.height - VIEWPORT_SIZE.height)}px`};
+      top: ${`${-(
+        CANVAS_SIZE.height +
+        (CANVAS_SIZE.height * scaleValue - CANVAS_SIZE.height) / 2 -
+        VIEWPORT_SIZE.height
+      )}px`};
     }
     ${`${animation.scrollStartPercentage}%`} {
-      top: ${`${-(CANVAS_SIZE.height - VIEWPORT_SIZE.height)}px`};
+      top: ${`${-(
+        CANVAS_SIZE.height +
+        (CANVAS_SIZE.height * scaleValue - CANVAS_SIZE.height) / 2 -
+        VIEWPORT_SIZE.height
+      )}px`};
     }
     to {
       top: 0px;
