@@ -2,7 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import { PageWrapper } from "../components/PageWrapper";
 import EndPage from "./EndPage";
-import Gameviewport from "./../game/GameViewport";
+import Gameviewport from "./../game/level1/GameViewport";
 import lostInSpaceImageSrc from "../assets/playerJumping.png";
 import finishedGameImageSrc from "../assets/asteronautRakete.png";
 import BackToMenuButton from "../components/BackToMenuButton";
