@@ -23,7 +23,7 @@ if (window.innerHeight > scaledWidth) {
   translateXValue = (scaledWidth - CANVAS_SIZE.width) / 2;
 } else {
   scaleValue = 1;
-  translateXValue = 0;
+  translateXValue = (window.innerWidth - CANVAS_SIZE.width) / 2;
 }
 
 const CameraContainer = styled.div`
