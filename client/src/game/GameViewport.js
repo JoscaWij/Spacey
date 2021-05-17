@@ -26,7 +26,7 @@ const CameraContainer = styled.div`
   canvas {
     position: fixed;
     animation: scrollingcamera linear ${`${animation.duration}s`};
-    transform: scale(${scaleValue}) translateX(${`${translateXValue}px`});
+    transform: translateX(${`${translateXValue}px`}) scale(${scaleValue});
   }
   @keyframes scrollingcamera {
     0% {
