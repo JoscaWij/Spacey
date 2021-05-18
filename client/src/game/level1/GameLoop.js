@@ -6,7 +6,7 @@ import letPlayerStandOnPlatform from "./letPlayerStandOnPlatform";
 import { PLATFOMRHEIGHT, platforms } from "./platforms";
 import checkIfPlayerIsByRocket from "./checkIfPlayerIsByRocket";
 import { VIEWPORT_SIZE } from "./GameViewport";
-import { CANVAS_SIZE } from "./Game";
+import { CANVAS_SIZE } from "./GameLevel1";
 
 function clearCanvas(canvas, context) {
   context.clearRect(0, 0, canvas.width, canvas.height);
