@@ -26,7 +26,7 @@ function App() {
           <Route path="/game/end">
             <EndPage />
           </Route>
-          <Route path="/game/level/:level">
+          <Route path="/game/level/:levelnumber">
             <GamePage />
           </Route>
           <Route exact path="/">
