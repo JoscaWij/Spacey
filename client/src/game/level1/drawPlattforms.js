@@ -1,4 +1,4 @@
-import platformImageSrc from "./../assets/asteroid.png";
+import platformImageSrc from "./../../assets/asteroid.png";
 
 const platformImage = new Image();
 platformImage.src = platformImageSrc;

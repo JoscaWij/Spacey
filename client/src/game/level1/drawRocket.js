@@ -1,4 +1,4 @@
-import rocketImageSrc from "./../assets/rocket.png";
+import rocketImageSrc from "./../../assets/rocket.png";
 
 const rocketImage = new Image();
 rocketImage.src = rocketImageSrc;

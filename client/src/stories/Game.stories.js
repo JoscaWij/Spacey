@@ -1,5 +1,5 @@
 import React from "react";
-import Game from "../game/Game";
+import Game from "../game/level1/Game";
 
 export default {
   title: "Game/Game",
