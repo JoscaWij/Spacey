@@ -19,7 +19,6 @@ function GamePage() {
   const [resetGame, setResetGame] = React.useState(false);
 
   let { levelnumber } = useParams();
-  console.log(levelnumber);
 
   function renderLevel(
     levelnumber,
