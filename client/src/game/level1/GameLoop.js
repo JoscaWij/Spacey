@@ -1,10 +1,10 @@
 import drawPlanetside from "./drawPlanetside";
 import drawPlattforms from "./drawPlattforms";
 import drawRocket from "./drawRocket";
-import drawPlayer from "./drawPlayer";
+import drawPlayer from "./../drawPlayer";
 import letPlayerStandOnPlatform from "./letPlayerStandOnPlatform";
 import { PLATFOMRHEIGHT, platforms } from "./platforms";
-import checkIfPlayerIsByRocket from "./checkIfPlayerIsByRocket";
+import checkIfPlayerIsByRocket from "../checkIfPlayerIsByRocket";
 import { VIEWPORT_SIZE } from "./GameViewport";
 import { CANVAS_SIZE } from "./GameLevel1";
 
