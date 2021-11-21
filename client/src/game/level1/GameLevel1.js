@@ -7,7 +7,7 @@ import {
   DIRECTION_KEYS,
   DIRECTIONS,
 } from "./GameLoop";
-import rotatePlayer from "./rotatePlayer";
+import rotatePlayer from "../rotatePlayer";
 import { animation } from "./GameViewport";
 
 export const CANVAS_SIZE = {
