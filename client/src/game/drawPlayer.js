@@ -3,11 +3,30 @@ import playerImageSrc from "./../assets/playerSpriteSheet.png";
 const playerImage = new Image();
 playerImage.src = playerImageSrc;
 
-export default function drawPlayer(player, context) {
+let srcMesurements = {
+  srcWidth: 0,
+  srcHeight: 0,
+};
+
+function getSrcMeasurements(levelnumber) {
+  switch (levelnumber) {
+    case "2":
+      return (srcMesurements = {
+        srcWidth: 200,
+        srcHeight: 200,
+      });
+    default:
+      return (srcMesurements = {
+        srcWidth: 180,
+        srcHeight: 240,
+      });
+  }
+}
+
+export default function drawPlayer(player, context, levelnumber) {
   const { width, height, left, top, direction } = player;
 
-  const srcWidth = 180;
-  const srcHeight = 240;
+  getSrcMeasurements(levelnumber);
   const startCol = 0;
 
   const directionRows = {
@@ -18,16 +37,16 @@ export default function drawPlayer(player, context) {
   };
   const startRow = directionRows[direction] || directionRows.FRONT;
 
-  const srcX = srcWidth * startCol;
-  const srcY = srcHeight * startRow;
+  const srcX = srcMesurements.srcWidth * startCol;
+  const srcY = srcMesurements.srcHeight * startRow;
 
   context.beginPath();
   context.drawImage(
     playerImage,
     srcX,
     srcY,
-    srcWidth,
-    srcHeight,
+    srcMesurements.srcWidth,
+    srcMesurements.srcHeight,
     left,
     top,
     width,
