@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { useParams } from "react-router";
+import { gameLoop2 } from "./level2/GameLoop2";
 
 function resizeCanvas(canvas) {
   canvas.width = document.body.clientWidth;
@@ -16,6 +17,7 @@ const Game = () => {
     resizeCanvas(canvas);
 
     console.log(levelnumber);
+    gameLoop2(canvas);
   });
 
   return <canvas ref={canvasRef} />;
