@@ -1,4 +1,4 @@
-import { rocket } from "./drawRocket";
+import { rocket } from "./level1/drawRocket";
 
 export default function checkIfPlayerIsByRocket(player) {
   const playerCollidesOnXAchses =
