@@ -12,8 +12,8 @@ function getSrcMeasurements(levelnumber) {
   switch (levelnumber) {
     case "2":
       return (srcMesurements = {
-        srcWidth: 200,
-        srcHeight: 200,
+        srcWidth: 549,
+        srcHeight: 366,
       });
     default:
       return (srcMesurements = {
