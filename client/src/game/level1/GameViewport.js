@@ -1,5 +1,5 @@
 import React from "react";
-import Game, { CANVAS_SIZE } from "./Game";
+import Game, { CANVAS_SIZE } from "./GameLevel1";
 import styled from "@emotion/styled";
 import PropTypes from "prop-types";
 

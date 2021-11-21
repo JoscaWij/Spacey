@@ -1,4 +1,4 @@
-import planetsideImageSrc from "./../assets/planet.png";
+import planetsideImageSrc from "./../../assets/planet.png";
 
 const planetsideImage = new Image();
 planetsideImage.src = planetsideImageSrc;

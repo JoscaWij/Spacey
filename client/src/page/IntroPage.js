@@ -29,7 +29,7 @@ function IntroPage() {
           <img src={IconSpraceSrc} alt="Space key" />
           <p>Space to jump.</p>
         </IntroTextbox>
-        <ProceedButton path="/game" />
+        <ProceedButton path="/game/level/1" />
       </OutlinedContainer>
     </IntroPageWrapper>
   );
