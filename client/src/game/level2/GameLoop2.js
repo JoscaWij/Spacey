@@ -5,8 +5,8 @@ function clearCanvas(canvas, context) {
 }
 
 const player = {
-  width: 200,
-  height: 200,
+  width: document.body.clientWidth * 0.05 * 2,
+  height: document.body.clientWidth * 0.05,
   left: 50,
   top: 50,
 };
