@@ -1,4 +1,4 @@
-import playerImageSrc from "./../../assets/playerSpriteSheet.png";
+import playerImageSrc from "./../assets/playerSpriteSheet.png";
 
 const playerImage = new Image();
 playerImage.src = playerImageSrc;
