@@ -7,6 +7,15 @@ function resizeCanvas(canvas) {
   canvas.height = window.innerHeight;
 }
 
+function chooseGameLoop(levelnumber, canvas) {
+  switch (levelnumber) {
+    case "2":
+      return gameLoop2(canvas);
+    default:
+      return console.error("No gameloop found for this level");
+  }
+}
+
 const Game = () => {
   const canvasRef = useRef(null);
 
@@ -15,9 +24,7 @@ const Game = () => {
   useEffect(() => {
     const canvas = canvasRef.current;
     resizeCanvas(canvas);
-
-    console.log(levelnumber);
-    gameLoop2(canvas);
+    chooseGameLoop(levelnumber, canvas);
   });
 
   return <canvas ref={canvasRef} />;
