@@ -10,7 +10,7 @@ function resizeCanvas(canvas) {
 function chooseGameLoop(levelnumber, canvas) {
   switch (levelnumber) {
     case "2":
-      return gameLoop2(canvas);
+      return gameLoop2(canvas, levelnumber);
     default:
       return console.error("No gameloop found for this level");
   }

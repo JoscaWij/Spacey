@@ -11,11 +11,11 @@ const player = {
   top: 50,
 };
 
-export const gameLoop2 = (canvas) => {
+export const gameLoop2 = (canvas, levelnumber) => {
   const context = canvas.getContext("2d");
   clearCanvas(canvas, context);
 
-  drawPlayer(player, context, 2);
+  drawPlayer(player, context, levelnumber);
 
-  requestAnimationFrame(() => gameLoop2(canvas));
+  requestAnimationFrame(() => gameLoop2(canvas, levelnumber));
 };
