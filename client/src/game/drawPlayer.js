@@ -1,14 +1,41 @@
 import playerImageSrc from "./../assets/playerSpriteSheet.png";
+import playerImageSrc2 from "./../assets/PlayerOnRocket.png";
 
 const playerImage = new Image();
-playerImage.src = playerImageSrc;
 
-export default function drawPlayer(player, context) {
+let srcMesurements = {
+  srcWidth: 0,
+  srcHeight: 0,
+};
+
+function getSrcMeasurements(levelnumber) {
+  switch (levelnumber) {
+    case "2":
+      return (srcMesurements = {
+        srcWidth: 549,
+        srcHeight: 366,
+      });
+    default:
+      return (srcMesurements = {
+        srcWidth: 180,
+        srcHeight: 240,
+      });
+  }
+}
+
+export default function drawPlayer(player, context, levelnumber) {
   const { width, height, left, top, direction } = player;
 
-  const srcWidth = 180;
-  const srcHeight = 240;
+  getSrcMeasurements(levelnumber);
   const startCol = 0;
+
+  switch (levelnumber) {
+    case "2":
+      playerImage.src = playerImageSrc2;
+      break;
+    default:
+      playerImage.src = playerImageSrc;
+  }
 
   const directionRows = {
     FRONT: 0,
@@ -18,16 +45,16 @@ export default function drawPlayer(player, context) {
   };
   const startRow = directionRows[direction] || directionRows.FRONT;
 
-  const srcX = srcWidth * startCol;
-  const srcY = srcHeight * startRow;
+  const srcX = srcMesurements.srcWidth * startCol;
+  const srcY = srcMesurements.srcHeight * startRow;
 
   context.beginPath();
   context.drawImage(
     playerImage,
     srcX,
     srcY,
-    srcWidth,
-    srcHeight,
+    srcMesurements.srcWidth,
+    srcMesurements.srcHeight,
     left,
     top,
     width,
