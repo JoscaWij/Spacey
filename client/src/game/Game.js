@@ -8,13 +8,6 @@ const Game = () => {
     canvas.height = window.innerHeight;
   }
 
-  console.log(
-    document.body.clientHeight,
-    document.body.clientWidth,
-    window.innerHeight,
-    window.innerWidth
-  );
-
   useEffect(() => {
     const canvas = canvasRef.current;
     resizeCanvas(canvas);
