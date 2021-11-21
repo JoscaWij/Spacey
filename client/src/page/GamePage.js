@@ -7,6 +7,7 @@ import lostInSpaceImageSrc from "../assets/playerJumping.png";
 import finishedGameImageSrc from "../assets/asteronautRakete.png";
 import BackToMenuButton from "../components/BackToMenuButton";
 import { useParams } from "react-router";
+import Game from "../game/Game";
 
 const GameWrapper = styled(PageWrapper)`
   justify-content: center;
@@ -18,7 +19,6 @@ function GamePage() {
   const [resetGame, setResetGame] = React.useState(false);
 
   let { levelnumber } = useParams();
-  console.log(levelnumber);
 
   function renderLevel(
     levelnumber,
@@ -45,7 +45,7 @@ function GamePage() {
           </GameWrapper>
         );
       case "2":
-        return <div>level 2 - coming soon</div>;
+        return <Game />;
       default:
         return <div>No level choosen. Please try again</div>;
     }
