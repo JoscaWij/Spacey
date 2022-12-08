@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/JoscaWij/fullstack-template#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.18.2"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^2.34.0",
